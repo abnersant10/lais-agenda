@@ -1,0 +1,16 @@
+# ativar o ambiente virtual 
+
+python virtualenv venv
+venv\Scripts\activate
+
+# atualizar o pip
+py -m pip install -upgrade pip
+
+# instalar o Django
+py -m pip install Django
+
+# criar um projeto 
+django-admin startprocet agend .
+
+colocar pra rodar
+manage.py runserver
