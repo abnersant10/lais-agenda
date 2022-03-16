@@ -12,5 +12,11 @@ py -m pip install Django
 # criar um projeto 
 django-admin startprocet agend .
 
+# criar um app 
+python manage.py startapp lais-agend
+
 colocar pra rodar
 manage.py runserver
+
+# migrate data
+ python manage.py makemigrations lais

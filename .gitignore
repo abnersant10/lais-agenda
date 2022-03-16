@@ -21,3 +21,6 @@ __pycache__/
 __localcode
 venv
 env
+
+# Secrets Keys
+settings_local.py
