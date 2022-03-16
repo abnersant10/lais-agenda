@@ -10,9 +10,14 @@
       {%csrf_token%}
       <label>CPF</label><br>
       <input type="number" name="#"/><br><br>
-      <label>Senha:</label><br>
+      <label>Senha</label><br>
       <input type="password" name="#"/><br><br>
       <input type="submit" value="ENTRAR"/>
+      <a href="{% url 'cadastro' %}" >
+        CADASTRAR
+      </a>
     </form>
+    </form>
+    
   </body>
 </html>

@@ -7,3 +7,7 @@ def login(request):
     if request.method == 'POST':
         return HttpResponse("aeeer")
     return render(request, "login.html")
+
+
+def cadastro(request):
+    return render(request, "cadastro.html")
