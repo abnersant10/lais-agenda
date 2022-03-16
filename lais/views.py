@@ -4,4 +4,6 @@ from django.http import HttpResponse
 
 
 def login(request):
-    return HttpResponse("Olá deu certo")
+    if request.method == 'POST':
+        return HttpResponse("aeeer")
+    return render(request, "login.html")
