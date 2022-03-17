@@ -22,11 +22,15 @@
       <label for="css">NÃO</label><br><br>
       <!-- grupos de atendimento -->
       <label>Grupo de Atendimento</label> <br> <br>
-      <select class="form-control"  name="unidade">
-        {% for nome_unid, cod_unid in unidades %}
-        <option    name="{{ cod_unid }}" value="{{ cod_unid }}"> {{ cod_unid }} - {{ nome_unid }} </option>    
-        {% endfor %}
-        </select>
+
+      {{grp_atend}}
+     {% for grp_atend , name in grp_atend %}
+       {{ide}} 
+     {% endfor %}
+  
+
+     {{'oiiin'}} 
+
 
       <br><br>
       <label>Senha:</label><br>

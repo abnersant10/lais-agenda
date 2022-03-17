@@ -24,3 +24,4 @@ env
 
 # Secrets Keys
 settings_local.py
+tests_local.py
