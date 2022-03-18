@@ -5,41 +5,38 @@
     <meta charset="utf-8"/>
   </head>
   <body>
-    <h2>PAGINA DE CADASTRO</h2>
+    <h1>AUTOCADASTRO</h1>
     <form method="post">
       {%csrf_token%}
       <label>Nome Completo</label><br>
-      <input type="name" name="#"/><br><br>
+      <input type="name" name="nome"/><br><br>
       <label>CPF</label><br>
-      <input type="number" name="#"/><br><br>
+      <input type="number" name="cpf" min="0" max="11" /><br><br>
       <label>Nascimento</label><br>
-      <input type="date" name="#"/><br><br>
+      <input type="date" name="nasc"/><br><br>
+      <label>Grupo de Atendimento</label> <br> <br>
+      <select name="gpr_atend">
+        {% for key , vaule in grp_atend.items %}
+        <option    name="{{ key }}" value="{{ key }}"> {{ key }} - {{ vaule }}  </option>    
+        {% endfor %}
+        </select>
 
+      <br><br>
       <label>Teve COVID nos ultimos 30 Dias?</label><br><br>
         <input type="radio" name="teve_covid" value="sim">
       <label for="html">SIM</label><br>
         <input type="radio" name="teve_covid" value="não">
       <label for="css">NÃO</label><br><br>
-      <!-- grupos de atendimento -->
-      <label>Grupo de Atendimento</label> <br> <br>
-
-      {{grp_atend}}
-     {% for grp_atend , name in grp_atend %}
-       {{ide}} 
-     {% endfor %}
-  
-
-     {{'oiiin'}} 
-
-
       <br><br>
       <label>Senha:</label><br>
-        <input type="password" name="#"/><br><br>
+        <input type="password" name="senha1"/><br><br>
       <label>Confirmar senha:</label><br>
-        <input type="password" name="#"/><br><br>
+        <input type="password" name="senha2"/><br><br>
         <input type="submit" value="CADASTRAR"/>
       <a href="{% url 'login' %}" >VOLTAR</a>
     </form>
+    
+
     
   </body>
 </html>

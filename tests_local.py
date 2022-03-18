@@ -5,12 +5,12 @@ xml = tree.getroot()
 grp_atend = {}
 i = 1
 for filho in xml:
-    grp_atend[i] = filho[0].text
+    grp_atend[str(i)] = filho[0].text
     i = i + 1
-    #print(filho[0].tag, filho[0].text)
+    # print(filho[0].tag, filho[0].text)
     # print("-------")
     pass
 
 
 for ide in grp_atend:
-    print(ide, grp_atend[ide])
+    print(ide)
