@@ -17,15 +17,15 @@ def login(request):
 def cadastro(request):
     # Receber os dados
     if request.method == 'POST':
-        nome = request.POST['nome']
-        cpf = request.POST['cpf']
-        nasc = request.POST['nasc']
-        grupo = request.POST['grupo']
-        teve_covid = request.POST['teve_covid']
-        senha1 = request.POST['senha1']
-        senha2 = request.POST['senha2']
-        pass
-    # validar os dados recebidos
+        nome = request.POST.get('nome')
+        cpf = request.POST.get('cpf')
+        nasc = request.POST.get('nasc')
+        grp = request.POST.get('grp')
+        teve_covid = request.POST.get('teve_covid')
+        senha1 = request.POST.get('senha1')
+        senha2 = request.POST.get('senha2')
+        # return HttpResponse(grp)
+    # tratar os dados recebidos
 
     # extrair o nome do grupo de atendimento XML
     tree = ET.parse(

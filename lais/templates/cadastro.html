@@ -11,22 +11,24 @@
       <label>Nome Completo</label><br>
       <input type="name" name="nome"/><br><br>
       <label>CPF</label><br>
-      <input type="number" name="cpf" min="0" max="11" /><br><br>
+      <input type="number" name="cpf"  /><br><br>
       <label>Nascimento</label><br>
       <input type="date" name="nasc"/><br><br>
       <label>Grupo de Atendimento</label> <br> <br>
-      <select name="gpr_atend">
+
+      <select name="grp">
         {% for key , vaule in grp_atend.items %}
-        <option    name="{{ key }}" value="{{ key }}"> {{ key }} - {{ vaule }}  </option>    
+        <option   name="{{ key }}" value="{{ key }}"> {{ key }} - {{ vaule }}
+        </option>    
         {% endfor %}
         </select>
 
       <br><br>
       <label>Teve COVID nos ultimos 30 Dias?</label><br><br>
         <input type="radio" name="teve_covid" value="sim">
-      <label for="html">SIM</label><br>
-        <input type="radio" name="teve_covid" value="não">
-      <label for="css">NÃO</label><br><br>
+      <label >Sim</label><br>
+        <input type="radio" name="teve_covid" value="nao">
+      <label>Não</label><br><br>
       <br><br>
       <label>Senha:</label><br>
         <input type="password" name="senha1"/><br><br>
