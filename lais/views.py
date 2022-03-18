@@ -1,10 +1,18 @@
 from http.client import HTTPResponse
 from multiprocessing import context
+from wsgiref.validate import validator
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.template import Context, Template
+# Exibir mensagens ao usuario
+from django.contrib import messages
+# Autenticação Django
+from django.contrib.auth.models import User
+# Biblioteca de validação de dados
+from lais.validacoes import validaCPF, validaData
 # extrair dados do XML
 import xml.etree.ElementTree as ET
+
+
 # Create your views here.
 
 
@@ -24,9 +32,26 @@ def cadastro(request):
         teve_covid = request.POST.get('teve_covid')
         senha1 = request.POST.get('senha1')
         senha2 = request.POST.get('senha2')
-        # return HttpResponse(grp)
-    # tratar os dados recebidos
-
+        print(grp)
+        print(type(grp))
+    # validar os dados recebidos
+    # validar CPF
+        if validaCPF(cpf) == False:
+            messages.error(request, 'CPF Inválido!')
+    # Validar a Data Nascimento
+        if validaData(nasc) == False:
+            messages.error(request, 'Data inválida | Menor de 18 anos!')
+    # Validar a senha
+        if senha1 != senha2:
+            messages.error(request, 'As senhas não conferem!')
+        if teve_covid == 'sim':
+            messages.error(request, 'Você teve COVID nos ultimos 30 dias!')
+        if grp == "67" or grp == "65" or grp == "70":
+            messages.error(
+                request, 'Seu grupo de atendimento não permite cadastrar!')
+        else:
+            messages.success(
+                request, 'Cadastro realizado com sucesso!')
     # extrair o nome do grupo de atendimento XML
     tree = ET.parse(
         'C:\\Users\\abner\Desktop\\backup\lais\\templates\\grupos_atendimento.xml')
