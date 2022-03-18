@@ -1,12 +1,10 @@
-from http.client import HTTPResponse
-from multiprocessing import context
-from wsgiref.validate import validator
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 # Exibir mensagens ao usuario
 from django.contrib import messages
-# Autenticação Django
-from django.contrib.auth.models import User
+# Autenticação Django e importar models
+from lais.models import cidadao
 # Biblioteca de validação de dados
 from lais.validacoes import validaCPF, validaData
 # extrair dados do XML
@@ -50,6 +48,9 @@ def cadastro(request):
             messages.error(
                 request, 'Seu grupo de atendimento não permite cadastrar!')
         else:
+            user = cidadao(User='Cassiano', cpf=cpf, nasc=nasc, grp=grp,
+                           teve_covid=teve_covid, senha1=senha1)
+
             messages.success(
                 request, 'Cadastro realizado com sucesso!')
     # extrair o nome do grupo de atendimento XML
