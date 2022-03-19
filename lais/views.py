@@ -56,17 +56,19 @@ def cadastro(request):
             salvar = False
         # Se o CPF NÃO estiver cadastrado, então salve os dados user
         if salvar and True:
-            try:
-                user = User.objects.create_user(
-                    username=cpf,
-                    password=senha1,)
-                user.save()
-                messages.success(
-                    request, 'Cadastro realizado com sucesso!')
-            except:
-                messages.error(
-                    request, 'CPF já está cadastrado!')
-                salvar = False
+            user = User.objects.create_user(
+                username=cpf,
+                password=senha1,)
+            user.save()
+            cid = cidadao(nome=nome, cpf=user, nasc=nasc,
+                          grp_atend=grp, teve_covid=teve_covid, senha=senha1)
+            cid.save()
+            messages.success(
+                request, 'Cadastro realizado com sucesso!')
+        else:
+            messages.error(
+                request, 'CPF já está cadastrado!')
+            salvar = False
     # extrair o nome do grupo de atendimento XML
     tree = ET.parse(
         'C:\\Users\\abner\Desktop\\backup\lais\\templates\\grupos_atendimento.xml')

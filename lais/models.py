@@ -13,7 +13,8 @@ class unidade(models.Model):
 
 class cidadao(models.Model):
     nome = models.CharField(max_length=50)
-    cpf = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    cpf = models.OneToOneField(
+        User, on_delete=models.CASCADE, default=None, primary_key=True)
     nasc = models.DateField(
         "nasc", auto_now=False, auto_now_add=False)
     grp_atend = models.CharField("grp_atend", max_length=100)
