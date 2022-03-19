@@ -1,6 +1,7 @@
+from tokenize import Name
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, UserManager
 # Exibir mensagens ao usuario
 from django.contrib import messages
 # Autenticação Django e importar models
@@ -34,23 +35,32 @@ def cadastro(request):
         print(type(grp))
     # validar os dados recebidos
     # validar CPF
+        salvar == True
         if validaCPF(cpf) == False:
             messages.error(request, 'CPF Inválido!')
+            salvar = False
+
     # Validar a Data Nascimento
         if validaData(nasc) == False:
             messages.error(request, 'Data inválida | Menor de 18 anos!')
+            salvar = False
     # Validar a senha
         if senha1 != senha2:
             messages.error(request, 'As senhas não conferem!')
+            salvar = False
         if teve_covid == 'sim':
             messages.error(request, 'Você teve COVID nos ultimos 30 dias!')
+            salvar = False
         if grp == "67" or grp == "65" or grp == "70":
             messages.error(
                 request, 'Seu grupo de atendimento não permite cadastrar!')
-        else:
-            user = cidadao(User='Cassiano', cpf=cpf, nasc=nasc, grp=grp,
-                           teve_covid=teve_covid, senha1=senha1)
-
+            salvar = False
+        if salvar == True:
+            user = User.objects.create_user(
+                username='nancy',
+                password='opensesame',
+                email='nancy@nancy.com')
+            user.save()
             messages.success(
                 request, 'Cadastro realizado com sucesso!')
     # extrair o nome do grupo de atendimento XML
