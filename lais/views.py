@@ -23,6 +23,7 @@ def login(request):
 
 def cadastro(request):
     # Receber os dados
+
     if request.method == 'POST':
         nome = request.POST.get('nome')
         cpf = request.POST.get('cpf')
@@ -31,11 +32,9 @@ def cadastro(request):
         teve_covid = request.POST.get('teve_covid')
         senha1 = request.POST.get('senha1')
         senha2 = request.POST.get('senha2')
-        print(grp)
-        print(type(grp))
     # validar os dados recebidos
     # validar CPF
-        salvar == True
+        salvar = True
         if validaCPF(cpf) == False:
             messages.error(request, 'CPF Inválido!')
             salvar = False
@@ -55,14 +54,19 @@ def cadastro(request):
             messages.error(
                 request, 'Seu grupo de atendimento não permite cadastrar!')
             salvar = False
-        if salvar == True:
-            user = User.objects.create_user(
-                username='nancy',
-                password='opensesame',
-                email='nancy@nancy.com')
-            user.save()
-            messages.success(
-                request, 'Cadastro realizado com sucesso!')
+        # Se o CPF NÃO estiver cadastrado, então salve os dados user
+        if salvar and True:
+            try:
+                user = User.objects.create_user(
+                    username=cpf,
+                    password=senha1,)
+                user.save()
+                messages.success(
+                    request, 'Cadastro realizado com sucesso!')
+            except:
+                messages.error(
+                    request, 'CPF já está cadastrado!')
+                salvar = False
     # extrair o nome do grupo de atendimento XML
     tree = ET.parse(
         'C:\\Users\\abner\Desktop\\backup\lais\\templates\\grupos_atendimento.xml')
