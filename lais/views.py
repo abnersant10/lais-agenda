@@ -1,8 +1,12 @@
+import http
 from pyexpat import model
+from urllib.request import Request
+from django import views
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import *
+from django.shortcuts import redirect
 # Exibir mensagens ao usuario
 from django.contrib import messages
 # Autenticação Django e importar models
@@ -17,17 +21,18 @@ import xml.etree.ElementTree as ET
 # Create your views here.
 
 
-def login(request):
+def home(request):
     if request.method == 'POST':
         cpf = request.POST.get('cpf')
         senha = request.POST.get('senha')
         # verrificar se CPF e Senha informada é igual no BD
         user = authenticate(request, username=cpf, password=senha)
         if user is not None:
-            return render(request, 'pag_inicial.html')
+            login(request, user)
+            return redirect('pag_inicial')
         else:
             messages.error(request, 'CPF ou Senha Incorreta!')
-    return render(request, "login.html")
+    return render(request, "home.html")
 
 
 def cadastro(request):
@@ -96,7 +101,7 @@ def cadastro(request):
 
 
 def pag_inicial(request):
-    if User.is_authenticated == True:
-        return render(request, "pag_inicial.html")
+    if request.user.is_authenticated == True:
+        return HttpResponse(request.user.is_authenticated)
     else:
-        return HttpResponse("ACESSO NEGADO")
+        return HttpResponse('ACESSO NEGADO!')
