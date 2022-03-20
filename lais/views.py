@@ -103,8 +103,12 @@ def cadastro(request):
 
 def pag_inicial(request):
     if request.user.is_authenticated == True:
-
-        print("Hello Word")
+        cpf = request.user.username
+        x = 0
+        #x = cidadao.objects.values_list('nome', 'cpf', 'cpf_id')
+        x = cidadao.objects.all().values('nome', 'cpf__username')
+        print(cpf)
+        print(x)
         return render(request, 'pag_inicial.html')
     else:
         return redirect('/')  # não estando autenticado volta pra home
