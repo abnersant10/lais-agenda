@@ -8,6 +8,7 @@ from django.contrib import messages
 from lais.models import cidadao
 # Biblioteca de validação de dados
 from lais.validacoes import validaCPF, validaData
+from validate_docbr import CPF
 # extrair dados do XML
 import xml.etree.ElementTree as ET
 
@@ -35,7 +36,8 @@ def cadastro(request):
     # validar os dados recebidos
     # validar CPF
         salvar = True
-        if validaCPF(cpf) == False:
+        _cpf = CPF()
+        if _cpf.validate(cpf) == False:
             messages.error(request, 'CPF Inválido!')
             salvar = False
 
