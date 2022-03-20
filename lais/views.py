@@ -1,6 +1,8 @@
+from pyexpat import model
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import *
 # Exibir mensagens ao usuario
 from django.contrib import messages
 # Autenticação Django e importar models
@@ -20,6 +22,11 @@ def login(request):
         cpf = request.POST.get('cpf')
         senha = request.POST.get('senha')
         # verrificar se CPF e Senha informada é igual no BD
+        user = authenticate(request, username=cpf, password=senha)
+        if user is not None:
+            return HttpResponse("aeeerrr")
+        else:
+            return HttpResponse("usuario invalido")
     return render(request, "login.html")
 
 
