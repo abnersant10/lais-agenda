@@ -1,5 +1,5 @@
 from pyexpat import model
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import *
@@ -24,7 +24,7 @@ def login(request):
         # verrificar se CPF e Senha informada é igual no BD
         user = authenticate(request, username=cpf, password=senha)
         if user is not None:
-            return HttpResponse("aeeerrr")
+            return render(request, 'pag_inicial.html')
         else:
             messages.error(request, 'CPF ou Senha Incorreta!')
     return render(request, "login.html")
@@ -32,7 +32,6 @@ def login(request):
 
 def cadastro(request):
     # Receber os dados
-
     if request.method == 'POST':
         nome = request.POST.get('nome')
         cpf = request.POST.get('cpf')
@@ -51,19 +50,19 @@ def cadastro(request):
 
     # Validar a Data Nascimento
         if validaData(nasc) == False:
-            messages.error(request, 'Data inválida | Menor de 18 anos!')
+            messages.error(request, 'Data inválida ou Menor de 18 anos!')
             salvar = False
     # Validar a senha
         if senha1 != senha2:
             messages.error(request, 'As senhas não conferem!')
             salvar = False
-        if teve_covid == 'sim':
-            messages.error(request, 'Você teve COVID nos ultimos 30 dias!')
-            salvar = False
-        if grp == "67" or grp == "65" or grp == "70":
-            messages.error(
-                request, 'Seu grupo de atendimento não permite cadastrar!')
-            salvar = False
+        # if teve_covid == 'sim':
+        #    messages.error(request, 'Você teve COVID nos ultimos 30 dias!')
+        #    salvar = False
+        # if grp == "67" or grp == "65" or grp == "70":
+        #    messages.error(
+        #        request, 'Seu grupo de atendimento não permite cadastrar!')
+        #    salvar = False
         # Se o CPF NÃO estiver cadastrado, então salve os dados user
         if salvar and True:
             user = User.objects.create_user(
@@ -94,4 +93,10 @@ def cadastro(request):
     # print(grp_atend)
 
     return render(request, "cadastro.html", {"grp_atend": grp_atend})
-    # return HttpResponse(grp_atend)
+
+
+def pag_inicial(request):
+    if User.is_authenticated == True:
+        return render(request, "pag_inicial.html")
+    else:
+        return HttpResponse("ACESSO NEGADO")
