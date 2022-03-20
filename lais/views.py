@@ -102,6 +102,7 @@ def cadastro(request):
 
 def pag_inicial(request):
     if request.user.is_authenticated == True:
+
         print("Hello Word")
         return render(request, 'pag_inicial.html')
     else:
