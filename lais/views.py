@@ -26,7 +26,7 @@ def login(request):
         if user is not None:
             return HttpResponse("aeeerrr")
         else:
-            return HttpResponse("usuario invalido")
+            messages.error(request, 'CPF ou Senha Incorreta!')
     return render(request, "login.html")
 
 
