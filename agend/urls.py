@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from lais.views import home, cadastro, pag_inicial
+from lais.views import home, cadastro, pag_inicial, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('cadastro', cadastro, name='cadastro'),
-    path('pag_inicial', pag_inicial, name='pag_inicial')
+    path('pag_inicial', pag_inicial, name='pag_inicial'),
+    path('logout', logout_view, name="logout"),
+
 ]
