@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Autocadastro</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body class="container">
+
+    <form method="post">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="0obEU0DcL9hHIRl7v4JoKriFmBBmVjqb42HMKxNTvEWFXUbY3vuxtG3mDOqPhEJU">
+        <h1> AUTOCADASTRO </h1>
+        <label>Nome Completo</label><br>
+        <input type="name" name="nome" required /><br>
+        <label>CPF</label><br>
+        <input type="number" name="cpf" required /><br><br>
+        <label>Nascimento</label><br>
+        <input type="date" name="nasc" required /><br><br>
+        <label>Grupo de Atendimento</label> <br>
+        <select name="grp" required>
+
+            <option name="1" value="1"> 1 - Pessoas acima de 75 anos
+            </option>
+
+            <option name="2" value="2"> 2 - Pessoas entre 60 a 74 anos
+            </option>
+
+            <option name="3" value="3"> 3 - Forças de Segurança e Salvamento
+            </option>
+
+            <option name="4" value="4"> 4 - Funcionário do Sistema de Privação de Liberdade
+            </option>
+
+            <option name="5" value="5"> 5 - Trabalhadores da Saúde
+            </option>
+
+            <option name="6" value="6"> 6 - Pessoas acima de 60 anos institucionalizadas
+            </option>
+
+            <option name="7" value="7"> 7 - Pessoas em Situação de Rua
+            </option>
+
+            <option name="8" value="8"> 8 - Trabalhadores da educação
+            </option>
+
+            <option name="9" value="9"> 9 - Caminhoneiro
+            </option>
+
+            <option name="10" value="10"> 10 - Trabalhadores Portuários
+            </option>
+
+            <option name="11" value="11"> 11 - Pessoas de 60 a 64 anos
+            </option>
+
+            <option name="12" value="12"> 12 - Pessoas de 65 a 69 anos
+            </option>
+
+            <option name="13" value="13"> 13 - Pessoas de 70 a 74 anos
+            </option>
+
+            <option name="14" value="14"> 14 - Pessoas de 75 a 79 anos
+            </option>
+
+            <option name="15" value="15"> 15 - Pessoas de 80 anos ou mais
+            </option>
+
+            <option name="16" value="16"> 16 - Síndrome de Down
+            </option>
+
+            <option name="17" value="17"> 17 - Marinha do Brasil - MB
+            </option>
+
+            <option name="18" value="18"> 18 - Exército Brasileiro - EB
+            </option>
+
+            <option name="19" value="19"> 19 - Força Aérea Brasileira - FAB
+            </option>
+
+            <option name="20" value="20"> 20 - Bombeiro Civil
+            </option>
+
+            <option name="21" value="21"> 21 - Bombeiro Militar
+            </option>
+
+            <option name="22" value="22"> 22 - Guarda Municipal
+            </option>
+
+            <option name="23" value="23"> 23 - Policial Rodoviário Federal
+            </option>
+
+            <option name="24" value="24"> 24 - Policial Civil
+            </option>
+
+            <option name="25" value="25"> 25 - Policial Federal
+            </option>
+
+            <option name="26" value="26"> 26 - Policial Militar
+            </option>
+
+            <option name="27" value="27"> 27 - Quilombola
+            </option>
+
+            <option name="28" value="28"> 28 - Povos indígenas em terras indígenas
+            </option>
+
+            <option name="29" value="29"> 29 - Ensino Básico
+            </option>
+
+            <option name="30" value="30"> 30 - Ensino Superior
+            </option>
+
+            <option name="31" value="31"> 31 - Auxiliar de Veterinário
+            </option>
+
+            <option name="32" value="32"> 32 - Biólogo
+            </option>
+
+            <option name="33" value="33"> 33 - Biomédico
+            </option>
+
+            <option name="34" value="34"> 34 - Cozinheiro e Auxiliares
+            </option>
+
+            <option name="35" value="35"> 35 - Cuidador de Idosos
+            </option>
+
+            <option name="36" value="36"> 36 - Doula/Parteira
+            </option>
+
+            <option name="37" value="37"> 37 - Enfermeiro(a)
+            </option>
+
+            <option name="38" value="38"> 38 - Farmacêutico
+            </option>
+
+            <option name="39" value="39"> 39 - Fisioterapeutas
+            </option>
+
+            <option name="40" value="40"> 40 - Fonoaudiólogo
+            </option>
+
+            <option name="41" value="41"> 41 - Funcionário do Sistema Funerário que tenham contato com cadáveres
+                potencialmente contaminados
+            </option>
+
+            <option name="42" value="42"> 42 - Médico
+            </option>
+
+            <option name="43" value="43"> 43 - Médico Veterinário
+            </option>
+
+            <option name="44" value="44"> 44 - Motorista de Ambulância
+            </option>
+
+            <option name="45" value="45"> 45 - Nutricionista
+            </option>
+
+            <option name="46" value="46"> 46 - Odontologista
+            </option>
+
+            <option name="47" value="47"> 47 - Pessoal da Limpeza
+            </option>
+
+            <option name="48" value="48"> 48 - Profissionais de Educação Física
+            </option>
+
+            <option name="49" value="49"> 49 - Psicólogo
+            </option>
+
+            <option name="50" value="50"> 50 - Recepcionista
+            </option>
+
+            <option name="51" value="51"> 51 - Segurança
+            </option>
+
+            <option name="52" value="52"> 52 - Assistente Social
+            </option>
+
+            <option name="53" value="53"> 53 - Técnico de Enfermagem
+            </option>
+
+            <option name="54" value="54"> 54 - Técnico de Veterinário
+            </option>
+
+            <option name="55" value="55"> 55 - Terapeuta Ocupacional
+            </option>
+
+            <option name="56" value="56"> 56 - Outros
+            </option>
+
+            <option name="57" value="57"> 57 - Auxiliar de Enfermagem
+            </option>
+
+            <option name="58" value="58"> 58 - Técnico de Odontologia
+            </option>
+
+            <option name="59" value="59"> 59 - Estudante
+            </option>
+
+            <option name="60" value="60"> 60 - Aéreo
+            </option>
+
+            <option name="61" value="61"> 61 - Coletivo Rodoviário Passageiros Urbano e de Longo Curso
+            </option>
+
+            <option name="62" value="62"> 62 - Ferroviário
+            </option>
+
+            <option name="63" value="63"> 63 - Metroviário
+            </option>
+
+            <option name="64" value="64"> 64 - Aquaviário
+            </option>
+
+            <option name="65" value="65"> 65 - Pessoas com Deficiência Institucionalizadas
+            </option>
+
+            <option name="66" value="66"> 66 - Pessoas com Deficiências Permanente Grave
+            </option>
+
+            <option name="67" value="67"> 67 - População Privada de Liberdade
+            </option>
+
+            <option name="68" value="68"> 68 - Trabalhadores Industriais
+            </option>
+
+            <option name="69" value="69"> 69 - Pessoas ACAMADAS de 75 a 79
+            </option>
+
+            <option name="70" value="70"> 70 - Pessoas ACAMADAS de 80 anos ou mais
+            </option>
+
+        </select>
+
+        <br><br>
+        <label>Teve COVID nos ultimos 30 Dias?</label><br>
+        <input type="radio" name="teve_covid" value="sim" required>
+        <label>Sim</label><br>
+        <input type="radio" name="teve_covid" value="nao" required>
+        <label>Não</label><br>
+        <label>Senha:</label><br>
+        <input type="password" name="senha1" required /><br><br>
+        <label>Confirmar senha:</label><br>
+        <input type="password" name="senha2" required /><br><br>
+
+
+
+
+
+
+
+        <input type="submit" value="CADASTRAR" />
+        <a href="/">VOLTAR</a>
+    </form>
+
+
+
+</body>
+
+</html>

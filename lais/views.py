@@ -1,13 +1,12 @@
-from tokenize import Name
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth.models import User, UserManager
+from django.contrib.auth.models import User
 # Exibir mensagens ao usuario
 from django.contrib import messages
 # Autenticação Django e importar models
 from lais.models import cidadao
 # Biblioteca de validação de dados
-from lais.validacoes import validaCPF, validaData
+from lais.validacoes import validaData
 from validate_docbr import CPF
 # extrair dados do XML
 import xml.etree.ElementTree as ET
@@ -18,7 +17,9 @@ import xml.etree.ElementTree as ET
 
 def login(request):
     if request.method == 'POST':
-        return HttpResponse("aeeer")
+        cpf = request.POST.get('cpf')
+        senha = request.POST.get('senha')
+        # verrificar se CPF e Senha informada é igual no BD
     return render(request, "login.html")
 
 
