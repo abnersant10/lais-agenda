@@ -102,14 +102,10 @@ def cadastro(request):
 
 def pag_inicial(request):
     if request.user.is_authenticated == True:
-
         print("Hello Word")
-        if request.method == 'POST':
-            logout(request)
-            return HttpResponse("Voce saiu com sucesso")
         return render(request, 'pag_inicial.html')
     else:
-        return HttpResponse('ACESSO NEGADO!')
+        return redirect('/')  # não estando autenticado volta pra home
 
 # Logout
 
