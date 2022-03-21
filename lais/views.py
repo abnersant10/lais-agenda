@@ -153,3 +153,5 @@ def agendamento(request):
             'idade': str(idade)
         }
         return render(request, 'agendamento.html', context)
+    else:
+        return redirect('/')  # não estando autenticado volta pra home

@@ -31,35 +31,23 @@
               </nav>
             </div>  
             <div class="card-body ">
-              <table class="table table-bordered  table-hover ">
-                <thead class="table-light">
-                  <tr>
-                    <td class="table-secondary"><b>Nome Completo</b></td>
-                    <td class="table-secondary"><b>CPF</b></td>
-                    <td class="table-secondary"><b>Nascimento</b></td>
-                    <td class="table-secondary"><b>Idade</b></td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="table-light"><b>{{nome}}</b></td>
-                    <td class="table-light"><b>{{cpf}}</b></td>
-                    <td class="table-light"><b>{{nasc|date:"d/m/Y"}}</b></td>
-                    <td class="table-light"><b>{{idade}} anos</b></td>
-                  </tr>
-                </tbody>
-              </table>
+              
               <div class="card-header h5">
                 NOVO AGENDAMENTO
               </div>
-            <div class="row border border-primary rounded py-3 my-3">
-              <div class="col-sm  ">
-                <p class="h5"> Situação </p>
-                <br>
-                <p class="h5"> Você está apto a fazer o primeiro agendamento! </p>
-                <p class="h5"> clique no botão para ir para página de agendamento. </p>
-              </p>
-                <br>
+            <div class="row border border-info rounded py-3 my-3">
+              <div class="col-sm ">
+                <p class="h5 my-4"> Escolha uma unidade de saúde </p>
+                <select class="form-control"  name="unidade">
+                <option> Selecione um estabelecimento </option>    
+                {% for nome_unid, cod_unid in unidades %}
+                <option    name="{{ cod_unid }}" value="{{ cod_unid }}"> {{ cod_unid }} - {{ nome_unid }} </option>    
+                {% endfor %}
+                </select>
+        
+
+            <p class="h5 my-4"> Escolha uma data e horario </p>
+            <input class="form-control"  type="datetime-local" name='data' > <br>
                 <a href="{% url 'agendamento' %}" class=" btn btn-success ">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
@@ -69,12 +57,13 @@
               </div>
               <div class="col-sm">
                 <p class="h5"> Restrições de agendamento </p>
-                <p >- Não ter COVID-19 nos ultimos 30 dias </p>
-                <p> - Maior de 18 anos </p>
-                <p> - Não percentecer aos grupos: </p>
-                <p>   População Privada de Liberdade (67) </p>
-                <p>   PCD Instituicionalizadas (65) </p>
-                <p>   Pessoas ACAMADAS ou de 80 anos ou mais (70) </p>
+                <p >- Cada estabelecimento oferece 5 vagas a cada 1 hora </p>
+                <p> - Horarios : 13:00 as 17:00 de Segunda a Quarta </p>
+                <p> - 13 horas (18 a 29 anos) </p>
+                <p> - 14 horas (30 a 39 anos) </p>
+                <p> - 15 horas (40 a 49 anos) </p>
+                <p> - 16 horas (50 a 59 anos) </p>
+                <p> - 17 horas (60 ou mais) </p>
               </div>
             </div>
             </div>
