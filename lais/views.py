@@ -163,8 +163,10 @@ def agendamento(request):
         if request.method == "POST":
             cod_unid = request.POST.get('unidade')
             data = request.POST.get('data')
+            hora = request.POST.get('hora')
             print(cod_unid)
             print(data)
+            print(hora)
 
         return render(request, 'agendamento.html', context)
     else:
