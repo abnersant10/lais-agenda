@@ -161,7 +161,11 @@ def agendamento(request):
             'unidades': unidades
         }
         if request.method == "POST":
-            return HttpResponse("Cadastro realizado com sucesso")
+            cod_unid = request.POST.get('unidade')
+            data = request.POST.get('data')
+            print(cod_unid)
+            print(data)
+
         return render(request, 'agendamento.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
