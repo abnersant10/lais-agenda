@@ -134,4 +134,22 @@ def logout_view(request):
 
 
 def agendamento(request):
-    return render(request, 'agendamento.html')
+    if request.user.is_authenticated == True:
+        cpf = request.user.username
+        x = 0
+        # x = cidadao.objects.values_list('nome', 'cpf', 'cpf_id')
+        # x = cidadao.objects.all().values('nome', 'cpf__username')
+        user = list(cidadao.objects.filter(
+            cpf__username=request.user.username).values_list('nome', 'nasc', 'teve_covid', 'grp_atend'))
+        print(cpf)
+        print(user)
+        dias_ano = 365.2425
+        idade = int((datetime.date.today() - user[0][1]).days / dias_ano)
+        context = {
+            'nome': str(user[0][0]),
+            'cpf': str(cpf),
+            'nasc': (user[0][1]),
+            # adicionar biblioteca date pegar idade
+            'idade': str(idade)
+        }
+        return render(request, 'agendamento.html', context)
