@@ -143,6 +143,13 @@ def agendamento(request):
             cpf__username=request.user.username).values_list('nome', 'nasc', 'teve_covid', 'grp_atend'))
         # print(cpf)
         # print(user)
+        tree = ET.parse(
+            'C:\\Users\\abner\\Desktop\\lais-agenda\\lais\\templates\\estabelecimentos_pr.xml')
+        xml = tree.getroot()
+        unidades = {}
+        for filho in xml:
+            unidades[filho[6].text] = filho[1].text
+
         dias_ano = 365.2425
         idade = int((datetime.date.today() - user[0][1]).days / dias_ano)
         context = {
@@ -150,8 +157,11 @@ def agendamento(request):
             'cpf': str(cpf),
             'nasc': (user[0][1]),
             # adicionar biblioteca date pegar idade
-            'idade': str(idade)
+            'idade': str(idade),
+            'unidades': unidades
         }
+        if request.method == "POST":
+            return HttpResponse("Cadastro realizado com sucesso")
         return render(request, 'agendamento.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
