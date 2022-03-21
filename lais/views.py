@@ -136,7 +136,7 @@ def logout_view(request):
 def agendamento(request):
     if request.user.is_authenticated == True:
         cpf = request.user.username
-        x = 0
+        salvar = True
         # x = cidadao.objects.values_list('nome', 'cpf', 'cpf_id')
         # x = cidadao.objects.all().values('nome', 'cpf__username')
         user = list(cidadao.objects.filter(
@@ -172,27 +172,36 @@ def agendamento(request):
             print(data)
             print(datetime.datetime.today())
             print(calendar.day_name[data.weekday()])
+            print(salvar)
             # se for hoje ou domingo, segunda ou terça (não cadastre)
+
             if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Sunday' or 'Monday' or 'Tuesday'):
+                salvar = False
                 messages.error(
                     request, 'Esta data não é permitida')
+
             # se for 13 horas e idade tiver fora do intervalo (18-29) não cadastrar
             if hora == '13' and not (18 <= idade <= 29):
+                salvar = False
                 messages.error(
                     request, '13:00 é reservado para idades 18-29 anos!')
             if hora == '14' and not (30 <= idade <= 39):
+                salvar = False
                 messages.error(
                     request, '14:00 é reservado para idades 30 - 39 anos!')
             if hora == '15' and not (40 <= idade <= 49):
+                salvar = False
                 messages.error(
                     request, '15:00 é reservado para idades 40 - 49 anos!')
             if hora == '16' and not (50 <= idade <= 59):
+                salvar = False
                 messages.error(
                     request, '16:00 é reservado para idades 50 - 59 anos!')
             if hora == '17' and not (idade >= 60):
+                salvar = False
                 messages.error(
                     request, '16:00 é reservado para 60 anos ou mais!')
-            else:
+            elif salvar == True:
                 print("PODE ?")
 
         return render(request, 'agendamento.html', context)
