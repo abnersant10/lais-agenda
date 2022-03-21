@@ -131,3 +131,7 @@ def pag_inicial(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+
+def agendamento(request):
+    return render(request, 'agendamento.html')
