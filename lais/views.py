@@ -16,7 +16,8 @@ from lais.validacoes import validaData
 from validate_docbr import CPF
 # extrair dados do XML
 import xml.etree.ElementTree as ET
-
+import datetime
+import calendar
 
 # Create your views here.
 
@@ -61,13 +62,13 @@ def cadastro(request):
         if senha1 != senha2:
             messages.error(request, 'As senhas não conferem!')
             salvar = False
-        # if teve_covid == 'sim':
-        #    messages.error(request, 'Você teve COVID nos ultimos 30 dias!')
-        #    salvar = False
-        # if grp == "67" or grp == "65" or grp == "70":
-        #    messages.error(
-        #        request, 'Seu grupo de atendimento não permite cadastrar!')
-        #    salvar = False
+        if teve_covid == 'sim':
+            messages.error(request, 'Você teve COVID nos ultimos 30 dias!')
+            salvar = False
+        if grp == "67" or grp == "65" or grp == "70":
+            messages.error(
+                request, 'Seu grupo de atendimento não permite cadastrar!')
+            salvar = False
         # Se o CPF NÃO estiver cadastrado, então salve os dados user
         if salvar and True:
             try:
@@ -111,11 +112,14 @@ def pag_inicial(request):
             cpf__username=request.user.username).values_list('nome', 'nasc', 'teve_covid', 'grp_atend'))
         print(cpf)
         print(user)
+        dias_ano = 365.2425
+        idade = int((datetime.date.today() - user[0][1]).days / dias_ano)
         context = {
             'nome': str(user[0][0]),
             'cpf': str(cpf),
-            'nasc': str(user[0][1]),
-            'idade': str(user[0][1])  # adicionar biblioteca date pegar idade
+            'nasc': (user[0][1]),
+            # adicionar biblioteca date pegar idade
+            'idade': str(idade)
         }
         return render(request, 'pag_inicial.html', context)
     else:

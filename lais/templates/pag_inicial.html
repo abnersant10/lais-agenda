@@ -43,7 +43,7 @@
                   <tr>
                     <td class="table-light"><b>{{nome}}</b></td>
                     <td class="table-light"><b>{{cpf}}</b></td>
-                    <td class="table-light"><b>{{nasc}}</b></td>
+                    <td class="table-light"><b>{{nasc|date:"d/m/Y"}}</b></td>
                     <td class="table-light"><b>{{idade}} anos</b></td>
                   </tr>
                 </tbody>
@@ -66,12 +66,13 @@
                 <input type="submit" class="btn btn-success" value="AGENDAR" />
               </div>
               <div class="col-sm">
-                <p><b> Restrições</b> </p>
-                <p>(1) - Dias Permitidos: Segunda a Sexta </p>
-                <p>(2) - Horarios Permitidos: 8:00 as 12:00 </p>
-                <p>(3) - Só é possível agendar em datas futuras </p>
-                <p>(4) - Só é permitido um agendamento por vez </p>
-                <p>(5) - Cada estabelecimento tem 1 vaga a cada 10 minutos </p>
+                <p><b> Restrições de Agendamento</b> </p>
+                <p >- Não ter COVID-19 nos ultimos 30 dias </p>
+                <p> - Maior de 18 anos </p>
+                <p> - Não percentecer aos grupos: </p>
+                <p>   População Privada de Liberdade (67) </p>
+                <p>   PCD Instituicionalizadas (65) </p>
+                <p>   Pessoas ACAMADAS ou de 80 anos ou mais (70) </p>
               </div>
             </div>
             </div>
