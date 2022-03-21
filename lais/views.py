@@ -87,7 +87,7 @@ def cadastro(request):
                 salvar = False
     # extrair o nome do grupo de atendimento XML
     tree = ET.parse(
-        'C:\\Users\\abner\Desktop\\backup\lais\\templates\\grupos_atendimento.xml')
+        'C:\\Users\\abner\\Desktop\\lais-agenda\\lais\\templates\\grupos_atendimento.xml')
     xml = tree.getroot()
     grp_atend = {}
     i = 1
@@ -110,8 +110,8 @@ def pag_inicial(request):
         # x = cidadao.objects.all().values('nome', 'cpf__username')
         user = list(cidadao.objects.filter(
             cpf__username=request.user.username).values_list('nome', 'nasc', 'teve_covid', 'grp_atend'))
-        print(cpf)
-        print(user)
+        # print(cpf)
+        # print(user)
         dias_ano = 365.2425
         idade = int((datetime.date.today() - user[0][1]).days / dias_ano)
         context = {
@@ -141,8 +141,8 @@ def agendamento(request):
         # x = cidadao.objects.all().values('nome', 'cpf__username')
         user = list(cidadao.objects.filter(
             cpf__username=request.user.username).values_list('nome', 'nasc', 'teve_covid', 'grp_atend'))
-        print(cpf)
-        print(user)
+        # print(cpf)
+        # print(user)
         dias_ano = 365.2425
         idade = int((datetime.date.today() - user[0][1]).days / dias_ano)
         context = {
