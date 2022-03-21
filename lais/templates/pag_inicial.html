@@ -11,15 +11,81 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
   </head>
-  <body class="container">
+  <body>
 
-    
-    <nav>
       <p> Bem vindo </p>
       <a href="{% url 'logout' %}">Logout</a>
-    </nav>
-    
-    
-    
+
+      <div class="text-center text-lg-start ">
+        <form action="" method="POST">
+          <div class="card container ">
+            <div class="card-header">
+              <nav class="navbar navbar-dark bg-primary">
+                <a class="navbar-brand" href="#">Bem vindo(a) : {{nome}}</a>
+              </button>
+                <form class="form-inline my-2 my-lg-0">
+                  <a href="{% url 'home' %}" class=" btn btn-warning ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                      <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                    </svg>
+                    SAIR</a>  
+                </form>
+              </nav>
+            </div>  
+            <div class="card-body ">
+              <table class="table table-bordered  table-hover ">
+                <thead class="table-light">
+                  <tr>
+                    <td class="table-secondary"><b>Nome Completo</b></td>
+                    <td class="table-secondary"><b>CPF</b></td>
+                    <td class="table-secondary"><b>Nascimento</b></td>
+                    <td class="table-secondary"><b>Idade</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="table-light"><b>{{nome}}</b></td>
+                    <td class="table-light"><b>{{cpf}}</b></td>
+                    <td class="table-light"><b>{{data_nasc}}</b></td>
+                    <td class="table-light"><b>{{idade}} anos</b></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="card-header h5">
+                Autoagendamento
+              </div>
+            <div class="row border border-primary rounded py-3 my-3">
+              <div class="col-sm  ">
+                <p class="h5"> Selecione uma unidade </p>
+                <select class="form-control"  name="unidade">
+                {% for nome_unid, cod_unid in unidades %}
+                <option    name="{{ cod_unid }}" value="{{ cod_unid }}"> {{ cod_unid }} - {{ nome_unid }} </option>    
+                {% endfor %}
+                </select>
+                <br>
+                <p class="h5"> Selecione uma data e horario </p>
+                <input class="form-control"  type="datetime-local" name='data' >
+                <br>
+                <input type="submit" class="btn btn-success" value="AGENDAR" />
+              </div>
+              <div class="col-sm">
+                <p><b> Restrições</b> </p>
+                <p>(1) - Dias Permitidos: Segunda a Sexta </p>
+                <p>(2) - Horarios Permitidos: 8:00 as 12:00 </p>
+                <p>(3) - Só é possível agendar em datas futuras </p>
+                <p>(4) - Só é permitido um agendamento por vez </p>
+                <p>(5) - Cada estabelecimento tem 1 vaga a cada 10 minutos </p>
+              </div>
+            </div>
+            </div>
+          </form>
+            <hr>
+            <footer>
+              <p class="h6">LAIS/HUOL - UFRN - Laboratório de Inovação Tecnológica em Saúde | Av. Nilo Peçanha, 620 - 59012-300 Petrópolis - Natal/RN - Brasil </p>
+              </footer>
+           
+       
+
   </body>
 </html>

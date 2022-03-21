@@ -82,7 +82,7 @@ def cadastro(request):
                     request, 'Cadastro realizado com sucesso!')
             except:
                 messages.error(
-                    request, 'Erro ao cadastrar!')
+                    request, 'CPF inválido ou já está cadastrado')
                 salvar = False
     # extrair o nome do grupo de atendimento XML
     tree = ET.parse(

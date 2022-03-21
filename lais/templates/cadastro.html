@@ -7,44 +7,123 @@
     <!-- Bootstrap CSS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
   </head>
   <body class="container" >
     
-    <form method="post">
-      {%csrf_token%}
-      <h1> AUTOCADASTRO </h1>
-      <label>Nome Completo</label><br>
-      <input type="name" name="nome" required/><br>
-      <label>CPF</label><br>
-      <input type="number" name="cpf" required /><br><br>
-      <label>Nascimento</label><br>
-      <input type="date" name="nasc"required /><br><br>
-      <label>Grupo de Atendimento</label> <br> 
-      <select name="grp" required>
-        {% for key , vaule in grp_atend.items %}
-        <option   name="{{ key }}" value="{{ key }}"> {{ key }} - {{ vaule }}
-        </option>    
-        {% endfor %}
-        </select>
+    <section>
+      <form action="" method="post">
+      {% csrf_token %} <!-- {{ form }} -->
+      <div class="container">
+        <div class="row justify-content-center border border-light rounded py-3">
+          <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+            <div class="row">
+              <div class="col text-center">
+                <h2>Autocadastro</h2>
+                <hr>
+              </div>
+            </div>
+            <div class="row align-items-center ">
+              
+              <div class="col  ">
+                <div class="input-group flex-nowrap">
+                  <i class="input-group-text bi bi-person-square"></i>
+                  <input type="text" class="form-control" placeholder="Nome Completo" aria-label="Username" aria-describedby="addon-wrapping" name="nome" required>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-center mt-4">
+              <div class="col">
+                <div class="input-group flex-nowrap">
+                  <i class="input-group-text bi bi-123"></i>
+                  <input type="number" class="form-control" placeholder="CPF (Apenas Números)" aria-label="Username" aria-describedby="addon-wrapping" name="cpf" required>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+              <label>
+                <div class="input-group flex-nowrap ">
+                  <i class="input-group-text bi bi-calendar-date"></i>
+                  <input class="form-control  " type="text" value="Data de nascimento" aria-label="readonly input example" readonly>
+                </div>
+                </label>
+                <input type="date" class="form-control" name="nasc" >
+              </div>
+            </div>
 
-      <br><br>
-      <label>Teve COVID nos ultimos 30 Dias?</label><br>
-        <input type="radio" name="teve_covid" value="sim" required>
-      <label >Sim</label><br>
-        <input type="radio" name="teve_covid" value="nao" required>
-      <label>Não</label><br>
-      <label>Senha:</label><br>
-        <input type="password" name="senha1" required/><br><br>
-      <label>Confirmar senha:</label><br>
-        <input type="password" name="senha2" required/><br><br>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+               
+            <select name="grp" required class="form-select ">
+              
+              <option> Selecione um grupo de atendimento </option>
+              {% for key , vaule in grp_atend.items %}
+              <option   name="{{ key }}" value="{{ key }}"> {{ key }} - {{ vaule }}
+              </option>    
+              {% endfor %}
+              </select>
+              
+            </div>
+            
+            <!-- Teve COVID ultimos 30 dias -->
+            <div class="row align-items-center">
+              <div class="col mt-4">
+              <h6> Voce teve COVID-19 nos ultimos 30 dias ? </h6>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="teve_covid" value="sim" >
+              <label class="form-check-label">
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="teve_covid" value="nao" >
+              <label class="form-check-label">
+                Não
+              </label>
+            </div>
+            </div>
+            </div>
 
-        {% if messages %}
+
+
+
+            <div class="row align-items-center mt-4">
+              <div class="col">
+                <div class="input-group flex-nowrap ">
+                  <i class="input-group-text bi bi-key"></i>
+                  <input type="password" class="form-control" placeholder="Senha" name="senha1">
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group flex-nowrap ">
+                  <input type="password" class="form-control" placeholder="Confirmar senha" name="senha2">
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-start my-4">
+              <div class="col">
+            
+                <!-- Sucess messages -->
+                {% if messages %}
+                {% for message in messages %}
+                  {%if message.tags == 'success' %}
+              <div class="alert alert-success alert-dismissible fade show " role="alert">
+                <strong>Atenção!</strong> {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              
+              <!-- Error Mesages -->
+              
+              {% if messages %}
           {% for message in messages %}
             {%if message.tags == 'error' %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Atenção!</strong> {{message}}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -53,22 +132,23 @@
         {% endif %}
 
 
-        {% if messages %}
-          {% for message in messages %}
-            {%if message.tags == 'success' %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Atenção!</strong> {{message}}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button class="btn btn-success mt-4">
+                  CADASTRAR
+                </button>
+                <a href="{% url 'home' %}" class="btn btn-secondary mt-4" >
+                  VOLTAR
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-        
-
-        <input type="submit" value="CADASTRAR"/>
-      <a href="{% url 'home' %}" >VOLTAR</a>
-    </form>
-    
+        <hr>
+        <footer class="py-2">
+        <p class="h6">LAIS/HUOL - UFRN - Laboratório de Inovação Tecnológica em Saúde | Av. Nilo Peçanha, 620 - 59012-300 Petrópolis - Natal/RN - Brasil. </p>
+        </footer>
+        <hr>
+      </div>
+    </section>
 
     
   </body>
