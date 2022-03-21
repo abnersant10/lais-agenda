@@ -164,6 +164,7 @@ def agendamento(request):
             cod_unid = request.POST.get('unidade')
             data = request.POST.get('data')
             hora = request.POST.get('hora')
+            # debug test
             print(cod_unid)
             print(data)
             print(hora)
@@ -171,9 +172,26 @@ def agendamento(request):
             print(data)
             print(datetime.datetime.today())
             print(calendar.day_name[data.weekday()])
+            # se for hoje ou domingo, segunda ou terça (não cadastre)
             if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Sunday' or 'Monday' or 'Tuesday'):
                 messages.error(
                     request, 'Esta data não é permitida')
+            # se for 13 horas e idade tiver fora do intervalo (18-29) não cadastrar
+            if hora == '13' and not (18 <= idade <= 29):
+                messages.error(
+                    request, '13:00 é reservado para idades 18-29 anos!')
+            if hora == '14' and not (30 <= idade <= 39):
+                messages.error(
+                    request, '14:00 é reservado para idades 30 - 39 anos!')
+            if hora == '15' and not (40 <= idade <= 49):
+                messages.error(
+                    request, '15:00 é reservado para idades 40 - 49 anos!')
+            if hora == '16' and not (50 <= idade <= 59):
+                messages.error(
+                    request, '16:00 é reservado para idades 50 - 59 anos!')
+            if hora == '17' and not (idade >= 60):
+                messages.error(
+                    request, '16:00 é reservado para 60 anos ou mais!')
             else:
                 print("PODE ?")
 
