@@ -10,7 +10,7 @@ from django.shortcuts import redirect
 # Exibir mensagens ao usuario
 from django.contrib import messages
 # Autenticação Django e importar models
-from lais.models import cidadao
+from lais.models import cidadao, agendado
 # Biblioteca de validação de dados
 from lais.validacoes import validaData
 from validate_docbr import CPF
@@ -165,16 +165,8 @@ def agendamento(request):
             data = request.POST.get('data')
             hora = request.POST.get('hora')
             # debug test
-            print(cod_unid)
-            print(data)
-            print(hora)
-            data = datetime.datetime.strptime(data, "%Y-%m-%d")
-            print(data)
-            print(datetime.datetime.today())
-            print(calendar.day_name[data.weekday()])
-            print(salvar)
             # se for hoje ou domingo, segunda ou terça (não cadastre)
-
+            data = datetime.datetime.strptime(data, "%Y-%m-%d")
             if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Sunday' or 'Monday' or 'Tuesday'):
                 salvar = False
                 messages.error(
@@ -201,7 +193,12 @@ def agendamento(request):
                 salvar = False
                 messages.error(
                     request, '16:00 é reservado para 60 anos ou mais!')
-            elif salvar == True:
+            # verificar a hora
+            for i in range(12, 17):
+                if i == int(hora):
+                    print(len(agendado.objects.values_list('ag_data')))
+                i = i + 1
+            if salvar == True:
                 print("PODE ?")
 
         return render(request, 'agendamento.html', context)
