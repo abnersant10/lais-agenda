@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <link
-        href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        rel="stylesheet"
-        id="bootstrap-css"
-      />
+         <!-- Bootstrap CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
       <!------ Include the above in your HEAD tag ---------->
       </head>
   <body>
@@ -16,8 +15,8 @@
         <form action="" method="POST">
           {%csrf_token%}
           <div class="card container ">
-            <div class="card-header">
-              <nav class="navbar navbar-dark bg-info">
+            <div class="card-header bg-primary">
+              <nav class="navbar navbar-dark ">
                 <a class="navbar-brand" href="#">Agendamento para : {{nome}}</a>
               </button>
                 <form class="form-inline my-2 my-lg-0">
@@ -35,10 +34,11 @@
               <div class="card-header h5">
                 NOVO AGENDAMENTO
               </div>
-            <div class="row border border-info rounded py-3 my-3">
+            <div class="row border border-secondary rounded py-3 my-3">
               <div class="col-sm ">
                 <p class="h5 my-4"> Escolha uma unidade de saúde </p>
                 <select class="form-control"  name="unidade">
+                  
                 {% for nome_unid, cod_unid in unidades.items %}
                 <option    name="{{ cod_unid }}" value="{{ cod_unid }}"> {{ cod_unid }} - {{ nome_unid }} </option>    
                 {% endfor %}
@@ -55,9 +55,20 @@
                 <option value="15">15:00 Horas</option>
                 <option value="16">16:00 Horas</option>
                 <option value="17">17:00 Horas</option>
-              </select>
+              </select> <br>
                 
+              <!-- Error Mesages -->
               
+              {% if messages %}
+          {% for message in messages %}
+            {%if message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Atenção!</strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
        
             
             

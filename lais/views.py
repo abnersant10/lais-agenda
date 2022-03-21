@@ -167,6 +167,15 @@ def agendamento(request):
             print(cod_unid)
             print(data)
             print(hora)
+            data = datetime.datetime.strptime(data, "%Y-%m-%d")
+            print(data)
+            print(datetime.datetime.today())
+            print(calendar.day_name[data.weekday()])
+            if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Sunday' or 'Monday' or 'Tuesday'):
+                messages.error(
+                    request, 'Esta data não é permitida')
+            else:
+                print("PODE ?")
 
         return render(request, 'agendamento.html', context)
     else:

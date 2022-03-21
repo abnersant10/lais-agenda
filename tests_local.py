@@ -1,12 +1,9 @@
-import xml.etree.ElementTree as ET
-tree = ET.parse(
-    'C:\\Users\\abner\\Desktop\\lais-agenda\\lais\\templates\\estabelecimentos_pr.xml')
-xml = tree.getroot()
-unidades = {}
-i = 0
-for filho in xml:
-    unidades[filho[6].text] = filho[1].text
-    i = i+1
-print(xml)
-print(unidades)
-print(i)
+import datetime
+import calendar
+data = '2022-04-03'
+data = datetime.datetime.strptime(data, "%Y-%m-%d")
+print(data)
+print(calendar.day_name[data.weekday()])
+
+
+# if data >= datetime.datetime.today() and calendar.day_name[data.weekday()] == ('Sunday' or 'Monday' or 'Tuesday'):
