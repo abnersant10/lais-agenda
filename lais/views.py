@@ -203,8 +203,9 @@ def agendamento(request):
                 nome_unid = list(unidades.keys())[list(
                     unidades.values()).index(cod_unid)]
                 agend = agendado(
-                    cod_und=cod_unid, nome_und=nome_unid, cpf=11437764452, ag_data=datetime.datetime.today())
+                    cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime.today())
                 # agend.save()
+                print(agend.ag_data)
         return render(request, 'agendamento.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
