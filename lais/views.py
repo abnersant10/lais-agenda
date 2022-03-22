@@ -202,11 +202,41 @@ def agendamento(request):
 
             nome_unid = list(unidades.keys())[list(
                 unidades.values()).index(cod_unid)]
-            agenda_horario = {13: 0, 14: 0, 15: 0, 16: 0, 17: 0}
+            # agendamentos disponivels se nome_und dia e hora baterem
+            ag_disp = {13: 0, 14: 0, 15: 0, 16: 0, 17: 0}
+            for ind in ag_bd:
+                # se o nome da unidade == nome_und (BD) então:
+                if nome_unid == ind[0]:
+                    # se data informada == data BD etão
+                    if data.date() == ind[1].date():
+                        # se a hora inforamda == hora BD então:
+                        if hora == str(ind[1].hour):
+                            ag_disp[int(ind[1].hour)] = ag_disp[int(
+                                ind[1].hour)] + 1
+            # se tiver vaga no horario cadastre
+            if ag_disp[int(hora)] < 3 and salvar == True:
+                agend = agendado(
+                    cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
+                # agend.save()
+                print("cadastro realizado com sucesso")
+            else:
+                messages.error(
+                    request, 'Não há mais vagas neste horario!')
+                print("não tem vaga nesse horario")
+                # se a hora do BD o valor agenda_horario < 5 então
+                if False:
+                    print(ag_disp[13])
+                    agend = agendado(
+                        cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
+                    # agend.save()
+                    print("cadastro salvo com sucesso")
+
             # Percorrer toda a lista de agendamento
-            for i in range(len(ag_bd)):
+            """"
+            for i in ag_bd:
                 # pegando atributos do registro i de agendados
-                attr = agendado.objects.values()[i]
+                attr=agendado.objects.values()[i]
+                print(agendado.objects.values()[i])
                 # se a unidade escolhida for igual a unidade i então:
                 if nome_unid == attr['nome_und']:
                     # se a data escolhida for igual a data i então
@@ -218,17 +248,23 @@ def agendamento(request):
                             # se a hora informada for 13 e o valor agenda_horario <= 5
                             if int(hora) == 13 and agenda_horario[13] <= 5:
                                 # se para as 13 horas e não tiver 5 pessoas cadastre
-                                pass
+                                agenda_horario[13]=agenda_horario[13] + 1
+                                print(agenda_horario[13])
+
+                                agend=agendado(
+                                    cod_und = int(cod_unid), nome_und = nome_unid, cpf = cpf, ag_data = datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
+                                # agend.save()
+
                             # salve no BD o novo agendamento
                             # se não, esse horario nao eh permitido
-
+"""
             # Salvar : nome, cod, cpf, data e hora (tratar hora!!)
-            if salvar == True:
-                agend = agendado(
-                    cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
-                # agend.save()
+            # if salvar == True:
+            #    agend = agendado(
+            #        cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, #ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), #int(hora)))
+            # agend.save()
 
-                return redirect('listagem')
+            return redirect('listagem')
 
         agendados = str(agendado.objects.values_list('cpf'))
         # se o CPF do usuário estiver na lista dos CPFS agendados não pode agendar
