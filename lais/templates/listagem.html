@@ -1,10 +1,102 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <title>Título da página</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <h1>PAGINA DE LISTAGEM</h1>
-  </body>
-</html>
+<head>
+  <!-- Bootstrap CSS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<div class="container">
+    <div class="card container ">
+        <div class="card-header bg-primary">
+          <nav class="navbar navbar-dark ">
+            <a class="navbar-brand" href="#"><b>Listagem dos agendamentos</b></a>
+          </button>
+            <form class="form-inline my-2 my-lg-0">
+              <a href="{% url 'agendamento' %}" class=" btn btn-warning ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                  </svg>
+                VOLTAR</a>  
+            </form>
+          </nav>
+        </div>  
+
+
+  <div class="alert alert-success my-3 " role="alert">
+    <b> Atenção!!! : Cadastro realizado com sucesso! </b>
+  </div>
+
+  
+
+  <div class="card-body ">
+    
+    <table class="table table-bordered  table-hover ">
+      <thead class="table-light">
+        <tr>
+          <td class="table-secondary"><b>Nome Completo</b></td>
+          <td class="table-secondary"><b>CPF</b></td>
+          <td class="table-secondary"><b>Unidade</b></td>
+          <td class="table-secondary"><b>Horario</b></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="table-light"><b>Abner de Santana Silva</b></td>
+          <td class="table-light"><b>11437764452</b></td>
+          <td class="table-light"><b>UBS - CIDADE ALTA</b></td>
+          <td class="table-light"><b> 15/02/2021 8:30</b></td>
+        </tr>
+        <tr>
+            <td class="table-light"><b>Leandro Silveira Martins</b></td>
+            <td class="table-light"><b>85968532150</b></td>
+            <td class="table-light"><b>UBS - NEÓPOLIS</b></td>
+            <td class="table-light"><b> 16/02/2021 10:30</b></td>
+          </tr>
+          <tr>
+            <td class="table-light"><b>Clovis Barros Neto</b></td>
+            <td class="table-light"><b>03255966852</b></td>
+            <td class="table-light"><b>UBS - POTENGI</b></td>
+            <td class="table-light"><b> 16/02/2021 10:49</b></td>
+          </tr>
+
+          <tr>
+            <td class="table-light"><b>Carlos Chagas Souza</b></td>
+            <td class="table-light"><b>25636514596</b></td>
+            <td class="table-light"><b>UBS - TIROL</b></td>
+            <td class="table-light"><b> 16/02/2021 08:25</b></td>
+          </tr>
+
+          <tr>
+            <td class="table-light"><b>Aristides Pacheco Gomes</b></td>
+            <td class="table-light"><b>95864813711</b></td>
+            <td class="table-light"><b>UBS - CAPIM MACIO</b></td>
+            <td class="table-light"><b> 17/02/2021 11:15</b></td>
+          </tr>
+
+          <tr>
+            <td class="table-light"><b>João Barbosa Queiroz</b></td>
+            <td class="table-light"><b>62534918635</b></td>
+            <td class="table-light"><b>UBS - BOM PASTOR</b></td>
+            <td class="table-light"><b> 18/02/2021 08:35</b></td>
+          </tr>
+
+          <tr>
+            <td class="table-light"><b>Maria das Virgens </b></td>
+            <td class="table-light"><b>165498715966</b></td>
+            <td class="table-light"><b>UBS - ALECRIM</b></td>
+            <td class="table-light"><b> 21/02/2021 08:45</b></td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <br>
+    <hr>
+    <footer>
+    <p class="h6">LAIS/HUOL - UFRN - Laboratório de Inovação Tecnológica em Saúde | Av. Nilo Peçanha, 620 - 59012-300 Petrópolis - Natal/RN - Brasil. </p>
+    </footer>
+    <hr>
+</div>
