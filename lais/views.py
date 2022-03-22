@@ -222,6 +222,7 @@ def agendamento(request):
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(a, m, d, h))
                 agend.save()
                 print(agend.ag_data)
+                return redirect('listagem')
 
         agendados = str(agendado.objects.values_list('cpf'))
         # se o CPF do usuário estiver na lista dos CPFS agendados não pode agendar
@@ -232,3 +233,7 @@ def agendamento(request):
         return render(request, 'agendamento.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
+
+
+def listagem(request):
+    return render(request, 'listagem.html')
