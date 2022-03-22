@@ -198,9 +198,13 @@ def agendamento(request):
                 if i == int(hora):
                     print(len(agendado.objects.values_list('ag_data')))
                 i = i + 1
+            # Salvar : nome, cod, cpf, data e hora (tratar hora!!)
             if salvar == True:
-                print("PODE ?")
-
+                nome_unid = list(unidades.keys())[list(
+                    unidades.values()).index(cod_unid)]
+                agend = agendado(
+                    cod_und=cod_unid, nome_und=nome_unid, cpf=11437764452, ag_data=datetime.datetime.today())
+                # agend.save()
         return render(request, 'agendamento.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home

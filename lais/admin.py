@@ -11,6 +11,6 @@ class AgendadoAdmin(admin.ModelAdmin):
 
 
 admin.site.register(cidadao, CidadaoAdmin)
-admin.site.register(agendado, CidadaoAdmin)
+admin.site.register(agendado, AgendadoAdmin)
 
 # Register your models here.

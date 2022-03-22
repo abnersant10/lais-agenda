@@ -9,12 +9,12 @@ from django.db import models
 
 class agendado(models.Model):
     cod_und = models.IntegerField()
-    nome_und = models.CharField(max_length=300)
+    nome_und = models.CharField(max_length=200)
     cpf = models.IntegerField(primary_key=True)
-    ag_data = models.DateField()
+    ag_data = models.DateTimeField()
 
     def __str__(self):
-        return self.cpf
+        return self.nome_und
 
 
 class cidadao(models.Model):
