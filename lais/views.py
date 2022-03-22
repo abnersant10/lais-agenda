@@ -214,23 +214,18 @@ def agendamento(request):
                         print("a data eh igual")
                         # se a hora informada == hora da hora i então:
                         if int(hora) == attr['ag_data'].hour:
+                            print("a hora eh igual")
                             # se a hora informada for 13 e o valor agenda_horario <= 5
                             if int(hora) == 13 and agenda_horario[13] <= 5:
                                 # se para as 13 horas e não tiver 5 pessoas cadastre
                                 pass
                             # salve no BD o novo agendamento
                             # se não, esse horario nao eh permitido
-                            pass
 
             # Salvar : nome, cod, cpf, data e hora (tratar hora!!)
-            a = int(data.year)
-            m = int(data.month)
-            d = int(data.day)
-            h = int(hora)
-
             if salvar == True:
                 agend = agendado(
-                    cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(a, m, d, h))
+                    cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
                 # agend.save()
 
                 return redirect('listagem')
