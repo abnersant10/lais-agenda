@@ -95,10 +95,6 @@ def cadastro(request):
         grp_atend[str(i)] = filho[0].text
         i = i + 1
 
-    # for ide in grp_atend:
-    #    print(grp_atend[ide])
-    # print(grp_atend)
-
     return render(request, "cadastro.html", {"grp_atend": grp_atend})
 
 
@@ -110,8 +106,6 @@ def pag_inicial(request):
         # x = cidadao.objects.all().values('nome', 'cpf__username')
         user = list(cidadao.objects.filter(
             cpf__username=request.user.username).values_list('nome', 'nasc', 'teve_covid', 'grp_atend'))
-        # print(cpf)
-        # print(user)
         dias_ano = 365.2425
         idade = int((datetime.date.today() - user[0][1]).days / dias_ano)
         context = {
@@ -151,8 +145,7 @@ def agendamento(request):
         # x = cidadao.objects.all().values('nome', 'cpf__username')
         user = list(cidadao.objects.filter(
             cpf__username=request.user.username).values_list('nome', 'nasc', 'teve_covid', 'grp_atend'))
-        # print(cpf)
-        # print(user)
+
         tree = ET.parse(
             'C:\\Users\\abner\\Desktop\\lais-agenda\\lais\\templates\\estabelecimentos_pr.xml')
         xml = tree.getroot()
@@ -203,12 +196,32 @@ def agendamento(request):
                 salvar = False
                 messages.error(
                     request, '16:00 é reservado para 60 anos ou mais!')
-            # verificar a hora
 
-            for i in range(12, 17):
-                if i == int(hora):
-                    print(agendado.objects.values_list('ag_data'))
-                i = i + 1
+            # se o nom_und tiver cadasterado no BD
+            ag_bd = (agendado.objects.values_list('nome_und', 'ag_data'))
+
+            nome_unid = list(unidades.keys())[list(
+                unidades.values()).index(cod_unid)]
+            agenda_horario = {13: 0, 14: 0, 15: 0, 16: 0, 17: 0}
+            # Percorrer toda a lista de agendamento
+            for i in range(len(ag_bd)):
+                # pegando atributos do registro i de agendados
+                attr = agendado.objects.values()[i]
+                # se a unidade escolhida for igual a unidade i então:
+                if nome_unid == attr['nome_und']:
+                    # se a data escolhida for igual a data i então
+                    if data.date() == attr['ag_data'].date():
+                        print("a data eh igual")
+                        # se a hora informada == hora da hora i então:
+                        if int(hora) == attr['ag_data'].hour:
+                            # se a hora informada for 13 e o valor agenda_horario <= 5
+                            if int(hora) == 13 and agenda_horario[13] <= 5:
+                                # se para as 13 horas e não tiver 5 pessoas cadastre
+                                pass
+                            # salve no BD o novo agendamento
+                            # se não, esse horario nao eh permitido
+                            pass
+
             # Salvar : nome, cod, cpf, data e hora (tratar hora!!)
             a = int(data.year)
             m = int(data.month)
@@ -216,12 +229,10 @@ def agendamento(request):
             h = int(hora)
 
             if salvar == True:
-                nome_unid = list(unidades.keys())[list(
-                    unidades.values()).index(cod_unid)]
                 agend = agendado(
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(a, m, d, h))
-                agend.save()
-                print(agend.ag_data)
+                # agend.save()
+
                 return redirect('listagem')
 
         agendados = str(agendado.objects.values_list('cpf'))

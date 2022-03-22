@@ -1,8 +1,2 @@
-import datetime
-import calendar
-data = '2022-04-03'
-data = datetime.datetime.strptime(data, "%Y-%m-%d").hour
-print(data)
-
-
-# if data >= datetime.datetime.today() and calendar.day_name[data.weekday()] == ('Sunday' or 'Monday' or 'Tuesday'):
+agenda_horario = {14: 0, 15: 0, 16: 0, 17: 0}
+print(agenda_horario)
