@@ -3,7 +3,7 @@ from pyexpat import model
 from urllib.request import Request
 from django import views
 from django.shortcuts import redirect, render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import *
 from django.shortcuts import redirect
@@ -126,7 +126,8 @@ def pag_inicial(request):
         # se o CPF do usuário estiver na lista dos CPFS agendados não pode agendar
         if cpf in agendados:
             messages.error(
-                request, 'O seu CPF já tem um cadastro de agendamento no sistema')
+                request, 'O seu CPF já tem um cadastro de agendamento no sistema, contate do administrador para liberar seu acesso')
+
         else:
             messages.success(
                 request, 'Está apto para fazer o primeiro agendamento, clique no botão para ir para página de agendamento')
@@ -215,6 +216,13 @@ def agendamento(request):
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime.today())
                 # agend.save()
                 print(agend.ag_data)
+
+        agendados = str(agendado.objects.values_list('cpf'))
+        # se o CPF do usuário estiver na lista dos CPFS agendados não pode agendar
+        if cpf in agendados:
+            # não pode agendar então volta p pagina inicial
+            return redirect('pag_inicial')
+
         return render(request, 'agendamento.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
