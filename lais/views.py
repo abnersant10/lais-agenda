@@ -18,6 +18,7 @@ from validate_docbr import CPF
 import xml.etree.ElementTree as ET
 import datetime
 import calendar
+from time import sleep, time
 
 # Create your views here.
 
@@ -217,8 +218,9 @@ def agendamento(request):
             if ag_disp[int(hora)] < 5 and salvar == True:
                 agend = agendado(
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
-                agend.save()
+                # agend.save()
                 # dar um tempo de 5 segundos aqui e mostrar mensagem de success
+                sleep(2)
                 return redirect('listagem')
             else:
                 messages.error(
