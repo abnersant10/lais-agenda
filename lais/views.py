@@ -196,7 +196,7 @@ def agendamento(request):
             # verificar a hora
             for i in range(12, 17):
                 if i == int(hora):
-                    print(len(agendado.objects.values_list('ag_data')))
+                    print(agendado.objects.values_list('ag_data'))
                 i = i + 1
             # Salvar : nome, cod, cpf, data e hora (tratar hora!!)
             if salvar == True:
