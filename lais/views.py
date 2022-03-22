@@ -122,15 +122,14 @@ def pag_inicial(request):
             'idade': str(idade)
         }
         # pegar a lista dos cpf agendados
-        cpf_agendados = str(agendado.objects.values_list('cpf'))
+        agendados = str(agendado.objects.values_list('cpf'))
         # se o CPF do usuário estiver na lista dos CPFS agendados não pode agendar
-        if cpf in cpf_agendados:
+        if cpf in agendados:
             messages.error(
-                request, 'VOCÊ JÁ AGENTOU MEUI CHAPA')
+                request, 'O seu CPF já tem um cadastro de agendamento no sistema')
         else:
             messages.success(
-                request, 'PODE AGENDAR AVONTADE')
-        print(cpf_agendados)
+                request, 'Está apto para fazer o primeiro agendamento, clique no botão para ir para página de agendamento')
         return render(request, 'pag_inicial.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
