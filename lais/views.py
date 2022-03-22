@@ -121,6 +121,16 @@ def pag_inicial(request):
             # adicionar biblioteca date pegar idade
             'idade': str(idade)
         }
+        # pegar a lista dos cpf agendados
+        cpf_agendados = str(agendado.objects.values_list('cpf'))
+        # se o CPF do usuário estiver na lista dos CPFS agendados não pode agendar
+        if cpf in cpf_agendados:
+            messages.error(
+                request, 'VOCÊ JÁ AGENTOU MEUI CHAPA')
+        else:
+            messages.success(
+                request, 'PODE AGENDAR AVONTADE')
+        print(cpf_agendados)
         return render(request, 'pag_inicial.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
