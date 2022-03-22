@@ -216,16 +216,18 @@ def agendamento(request):
                                 ind[1].hour)] + 1
             # se tiver vaga no horario cadastre
             if ag_disp[int(hora)] < 5 and salvar == True:
+
                 agend = agendado(
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
                 # agend.save()
-                # dar um tempo de 5 segundos aqui e mostrar mensagem de success
-                sleep(2)
+                # dar um tempo de 2 segundos aqui e mostrar mensagem de success
+                messages.success(
+                    request, 'Agendado com sucesso!')
+                sleep(1)
                 return redirect('listagem')
             else:
                 messages.error(
                     request, 'Não há mais vagas neste horario!')
-                print("não tem vaga nesse horario")
 
         agendados = str(agendado.objects.values_list('cpf'))
         # se o CPF do usuário estiver na lista dos CPFS agendados não pode agendar

@@ -15,19 +15,17 @@
             <a class="navbar-brand" href="#"><b>Listagem dos agendamentos</b></a>
           </button>
             <form class="form-inline my-2 my-lg-0">
-              <a href="{% url 'agendamento' %}" class=" btn btn-warning ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                  </svg>
-                VOLTAR</a>  
+              <a href="{% url 'logout' %}" class=" btn btn-warning ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                  <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                </svg>
+                SAIR</a>  
             </form>
           </nav>
         </div>  
 
 
-  <div class="alert alert-success my-3 " role="alert">
-    <b> Atenção!!! : Cadastro realizado com sucesso! </b>
-  </div>
 
   
 
@@ -36,10 +34,10 @@
     <table class="table table-bordered  table-hover ">
       <thead class="table-light">
         <tr>
-          <td class="table-secondary"><b>Nome Completo</b></td>
-          <td class="table-secondary"><b>CPF</b></td>
-          <td class="table-secondary"><b>Unidade</b></td>
-          <td class="table-secondary"><b>Horario</b></td>
+          <td class="table-secondary"><b>Data e Hora </b></td>
+          <td class="table-secondary"><b>Dia</b></td>
+          <td class="table-secondary"><b>Passou horario</b></td>
+          <td class="table-secondary"><b>Estabelecimento</b></td>
         </tr>
       </thead>
       <tbody>
