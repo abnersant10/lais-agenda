@@ -126,7 +126,7 @@ def pag_inicial(request):
         # se o CPF do usuário estiver na lista dos CPFS agendados não pode agendar
         if cpf in agendados:
             messages.error(
-                request, 'O seu CPF já tem um cadastro de agendamento no sistema, contate do administrador para liberar seu acesso')
+                request, 'O seu CPF já foi cadastrado na lista agendamento do sistema, contate do administrador para liberar um novo agendamento')
 
         else:
             messages.success(
@@ -204,17 +204,23 @@ def agendamento(request):
                 messages.error(
                     request, '16:00 é reservado para 60 anos ou mais!')
             # verificar a hora
+
             for i in range(12, 17):
                 if i == int(hora):
                     print(agendado.objects.values_list('ag_data'))
                 i = i + 1
             # Salvar : nome, cod, cpf, data e hora (tratar hora!!)
+            a = int(data.year)
+            m = int(data.month)
+            d = int(data.day)
+            h = int(hora)
+
             if salvar == True:
                 nome_unid = list(unidades.keys())[list(
                     unidades.values()).index(cod_unid)]
                 agend = agendado(
-                    cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime.today())
-                # agend.save()
+                    cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(a, m, d, h))
+                agend.save()
                 print(agend.ag_data)
 
         agendados = str(agendado.objects.values_list('cpf'))
