@@ -250,6 +250,8 @@ def listagem(request):
 def administrativo(request):
     if request.user.is_authenticated == True and request.user.is_superuser:
         # listar as unidades XML
+        resp_nome = {}
+        resp_cod = {}
         tree = ET.parse(
             'C:\\Users\\abner\\Desktop\\lais-agenda\\lais\\templates\\estabelecimentos_pr.xml')
         xml = tree.getroot()
@@ -257,15 +259,11 @@ def administrativo(request):
         for filho in xml:
             unidades[filho[6].text] = filho[1].text
 
-        context = {
-            'unidades': unidades
-        }
         if request.method == "POST":
             nome_rec = request.POST.get('nome_est')
             cod_rec = request.POST.get('cod_est')
-            resp_nome = {}
-            resp_cod = {}
-            # valores de busca do nome digitado
+
+        # valores de busca do nome digitado
             for nome in unidades:
                 if nome_rec in nome:
                     resp_nome[nome] = unidades[nome]
@@ -274,11 +272,13 @@ def administrativo(request):
             for cod in unidades:
                 if cod_rec == unidades[cod]:
                     resp_cod[cod] = cod_rec
+        context = {
+            'unidades': unidades,
+            'resp_cod': resp_cod,
+            'resp_nome': resp_nome
 
-        print("/n/n/n/n")
-        print(resp_nome)
-        print("/n/n/n/n")
-        print(resp_cod)
+        }
+
         return render(request, 'administrativo.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
