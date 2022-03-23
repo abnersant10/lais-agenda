@@ -102,9 +102,6 @@ def cadastro(request):
 def pag_inicial(request):
     if request.user.is_authenticated == True:
         cpf = request.user.username
-        x = 0
-        # x = cidadao.objects.values_list('nome', 'cpf', 'cpf_id')
-        # x = cidadao.objects.all().values('nome', 'cpf__username')
         user = list(cidadao.objects.filter(
             cpf__username=request.user.username).values_list('nome', 'nasc', 'teve_covid', 'grp_atend'))
         dias_ano = 365.2425
@@ -219,11 +216,7 @@ def agendamento(request):
 
                 agend = agendado(
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
-                # agend.save()
-                # dar um tempo de 2 segundos aqui e mostrar mensagem de success
-                messages.success(
-                    request, 'Agendado com sucesso!')
-                sleep(1)
+                agend.save()
                 return redirect('listagem')
             else:
                 messages.error(
@@ -243,6 +236,7 @@ def agendamento(request):
 def listagem(request):
     if request.user.is_authenticated == True:
         agend = agendado.objects.values_list('ag_data', 'cod_und', 'nome_und')
+
         today = datetime.datetime.now()
         context = {
             'agend': agend,
