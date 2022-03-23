@@ -249,6 +249,14 @@ def listagem(request):
 
 def administrativo(request):
     if request.user.is_authenticated == True and request.user.is_superuser:
+        # listar as unidades XML
+        tree = ET.parse(
+            'C:\\Users\\abner\\Desktop\\lais-agenda\\lais\\templates\\estabelecimentos_pr.xml')
+        xml = tree.getroot()
+        unidades = {}
+        for filho in xml:
+            unidades[filho[6].text] = filho[1].text
+        print(unidades)
         return render(request, 'administrativo.html')
     else:
         return redirect('/')  # não estando autenticado volta pra home
