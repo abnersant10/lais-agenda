@@ -39,16 +39,36 @@
         <tr>
           <td class="table-secondary" ><b>Data e Hora </b></td>
           <td class="table-secondary" ><b>Dia</b></td>
-          <td class="table-secondary" ><b>Passou</b></td>
+          <td class="table-secondary" ><b>Passou do horario</b></td>
           <td class="table-secondary" ><b>Estabelecimento</b></td>
         </tr>
       </thead>
       <tbody>
         {% for data , cod , nome in agend %}
         <tr>
-        <td  class="table-light" > <p> {{data}} </p> </td>
-        <td  class="table-light" > <p> dia </p> </td>
-        <td  class="table-light"> <p>Não </p></td>
+        <td  class="table-light" > <p> {{data }}  </p> </td>
+        <td  class="table-light" >
+          <p> {{data | date:"l"}} 
+        </p> 
+        </td>
+        <td  class="table-light">
+           {% if  today.date < data.date %}
+                 {% if  today.hour < data.hour %}
+                  <p> Não </p>
+                 {% endif %}
+           {% endif %}
+
+           {% if  today.date > data.date %}
+                 {% if  today.hour > data.hour %}
+                <p>Sim</p>
+                 {% endif %}
+           {% endif %}
+           
+ 
+        
+        </td>
+      
+
         <td  class="table-light"> <p> {{cod}} - {{nome}} </p></td>
         </tr>
         {% endfor %}
