@@ -8,7 +8,9 @@
 
 <!------ Include the above in your HEAD tag ---------->
 </head>
+
 <div class="container">
+  <p> {{agend.ag_data}} </p>
     <div class="card container ">
         <div class="card-header bg-primary">
           <nav class="navbar navbar-dark ">
@@ -30,7 +32,32 @@
   
 
   <div class="card-body ">
-    
+
+
+    <table class="table table-bordered  table-hover ">
+      <thead >
+        <tr>
+          <td ><b>Data e Hora </b></td>
+          <td ><b>Dia</b></td>
+          <td ><b>Passou horario</b></td>
+          <td ><b>Estabelecimento</b></td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data , cod , nome in agend %}
+        <tr>
+        <td> <p> {{data}} </p> </td>
+        <td> <p> dia </p> </td>
+        <td> <p>passou </p></td>
+        <td> <p>horario</p> </td>
+        <td> <p> {{cod}} - {{nome}} </p></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+
     <table class="table table-bordered  table-hover ">
       <thead class="table-light">
         <tr>

@@ -241,4 +241,9 @@ def agendamento(request):
 
 
 def listagem(request):
-    return render(request, 'listagem.html')
+    agend = agendado.objects.values_list('ag_data', 'cod_und', 'nome_und')
+    context = {
+        'agend': agend
+    }
+
+    return render(request, 'listagem.html', context)
