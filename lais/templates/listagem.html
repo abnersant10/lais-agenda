@@ -34,23 +34,22 @@
   <div class="card-body ">
 
 
-    <table class="table table-bordered  table-hover ">
-      <thead >
+    <table class="table table-bordered  table-hover">
+      <thead class="table-light" >
         <tr>
-          <td ><b>Data e Hora </b></td>
-          <td ><b>Dia</b></td>
-          <td ><b>Passou horario</b></td>
-          <td ><b>Estabelecimento</b></td>
+          <td class="table-secondary" ><b>Data e Hora </b></td>
+          <td class="table-secondary" ><b>Dia</b></td>
+          <td class="table-secondary" ><b>Passou</b></td>
+          <td class="table-secondary" ><b>Estabelecimento</b></td>
         </tr>
       </thead>
       <tbody>
         {% for data , cod , nome in agend %}
         <tr>
-        <td> <p> {{data}} </p> </td>
-        <td> <p> dia </p> </td>
-        <td> <p>passou </p></td>
-        <td> <p>horario</p> </td>
-        <td> <p> {{cod}} - {{nome}} </p></td>
+        <td  class="table-light" > <p> {{data}} </p> </td>
+        <td  class="table-light" > <p> dia </p> </td>
+        <td  class="table-light"> <p>Não </p></td>
+        <td  class="table-light"> <p> {{cod}} - {{nome}} </p></td>
         </tr>
         {% endfor %}
       </tbody>
@@ -58,64 +57,7 @@
 
 
 
-    <table class="table table-bordered  table-hover ">
-      <thead class="table-light">
-        <tr>
-          <td class="table-secondary"><b>Data e Hora </b></td>
-          <td class="table-secondary"><b>Dia</b></td>
-          <td class="table-secondary"><b>Passou horario</b></td>
-          <td class="table-secondary"><b>Estabelecimento</b></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="table-light"><b>Abner de Santana Silva</b></td>
-          <td class="table-light"><b>11437764452</b></td>
-          <td class="table-light"><b>UBS - CIDADE ALTA</b></td>
-          <td class="table-light"><b> 15/02/2021 8:30</b></td>
-        </tr>
-        <tr>
-            <td class="table-light"><b>Leandro Silveira Martins</b></td>
-            <td class="table-light"><b>85968532150</b></td>
-            <td class="table-light"><b>UBS - NEÓPOLIS</b></td>
-            <td class="table-light"><b> 16/02/2021 10:30</b></td>
-          </tr>
-          <tr>
-            <td class="table-light"><b>Clovis Barros Neto</b></td>
-            <td class="table-light"><b>03255966852</b></td>
-            <td class="table-light"><b>UBS - POTENGI</b></td>
-            <td class="table-light"><b> 16/02/2021 10:49</b></td>
-          </tr>
-
-          <tr>
-            <td class="table-light"><b>Carlos Chagas Souza</b></td>
-            <td class="table-light"><b>25636514596</b></td>
-            <td class="table-light"><b>UBS - TIROL</b></td>
-            <td class="table-light"><b> 16/02/2021 08:25</b></td>
-          </tr>
-
-          <tr>
-            <td class="table-light"><b>Aristides Pacheco Gomes</b></td>
-            <td class="table-light"><b>95864813711</b></td>
-            <td class="table-light"><b>UBS - CAPIM MACIO</b></td>
-            <td class="table-light"><b> 17/02/2021 11:15</b></td>
-          </tr>
-
-          <tr>
-            <td class="table-light"><b>João Barbosa Queiroz</b></td>
-            <td class="table-light"><b>62534918635</b></td>
-            <td class="table-light"><b>UBS - BOM PASTOR</b></td>
-            <td class="table-light"><b> 18/02/2021 08:35</b></td>
-          </tr>
-
-          <tr>
-            <td class="table-light"><b>Maria das Virgens </b></td>
-            <td class="table-light"><b>165498715966</b></td>
-            <td class="table-light"><b>UBS - ALECRIM</b></td>
-            <td class="table-light"><b> 21/02/2021 08:45</b></td>
-          </tr>
-      </tbody>
-    </table>
+    
 
 
     <br>
