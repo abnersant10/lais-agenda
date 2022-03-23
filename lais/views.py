@@ -241,11 +241,13 @@ def agendamento(request):
 
 
 def listagem(request):
-    agend = agendado.objects.values_list('ag_data', 'cod_und', 'nome_und')
-    today = datetime.datetime.now()
-    context = {
-        'agend': agend,
-        'today': today
-    }
-
-    return render(request, 'listagem.html', context)
+    if request.user.is_authenticated == True:
+        agend = agendado.objects.values_list('ag_data', 'cod_und', 'nome_und')
+        today = datetime.datetime.now()
+        context = {
+            'agend': agend,
+            'today': today
+        }
+        return render(request, 'listagem.html', context)
+    else:
+        return redirect('/')  # não estando autenticado volta pra home
