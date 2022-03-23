@@ -276,8 +276,10 @@ def administrativo(request):
             'unidades': unidades,
             'resp_cod': resp_cod,
             'resp_nome': resp_nome
-
         }
+        if len(resp_cod) != 0 or len(resp_nome) != 0:
+            messages.success(
+                request, 'Resultado busca por nome ou codigo')
 
         return render(request, 'administrativo.html', context)
     else:
