@@ -70,17 +70,18 @@
 
           <hr>
           <label class="h5 py-2">Buscar Estabelecimento</label>
-          <form>
+          <form method="post" >
+            {%csrf_token%}
             <div class="row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Nome do Estabelecimento de saúde">
+                <input type="text" name="nome_est" class="form-control" placeholder="Nome do Estabelecimento de saúde">
               </div>
               <div class="col">
             
-                <input type="number" class="form-control" placeholder="Codigo do Estabelecimento de saúde">
+                <input type="number" name="cod_est" class="form-control" placeholder="Codigo do Estabelecimento de saúde">
               </div>
               <div class="col">
-              <button type="button" class="btn btn-success">buscar</button>
+              <button type="submit" class="btn btn-success">buscar</button>
               </div>
             </div>
           </form><br>
@@ -124,7 +125,7 @@
               <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
 
-            <h3> Gráfico de Pizza : Usuários Agendados </h3>
+            <h3> Gráfico de Pizza : Usuários aptos ao agendamento </h3>
       <br>
       <hr>
       <footer>

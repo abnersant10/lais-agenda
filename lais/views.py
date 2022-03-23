@@ -260,6 +260,18 @@ def administrativo(request):
         context = {
             'unidades': unidades
         }
+        if request.method == "POST":
+            nome_rec = request.POST.get('nome_est')
+            cod_rec = request.POST.get('cod_est')
+            # resp_nome
+            for nome in unidades:
+                if nome_rec in nome:
+                    print(unidades[nome], nome)
+            for cod in unidades:
+                if cod_rec == unidades[cod]:
+                    print(unidades[cod], cod)
+                # print(unidades)
+            # resp_cod
         return render(request, 'administrativo.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
