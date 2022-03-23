@@ -263,15 +263,22 @@ def administrativo(request):
         if request.method == "POST":
             nome_rec = request.POST.get('nome_est')
             cod_rec = request.POST.get('cod_est')
-            # resp_nome
+            resp_nome = {}
+            resp_cod = {}
+            # valores de busca do nome digitado
             for nome in unidades:
                 if nome_rec in nome:
-                    print(unidades[nome], nome)
+                    resp_nome[nome] = unidades[nome]
+
+            # retorna valor do codigo digitado
             for cod in unidades:
                 if cod_rec == unidades[cod]:
-                    print(unidades[cod], cod)
-                # print(unidades)
-            # resp_cod
+                    resp_cod[cod] = cod_rec
+
+        print("/n/n/n/n")
+        print(resp_nome)
+        print("/n/n/n/n")
+        print(resp_cod)
         return render(request, 'administrativo.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
