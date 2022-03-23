@@ -245,3 +245,10 @@ def listagem(request):
         return render(request, 'listagem.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
+
+
+def administrativo(request):
+    if request.user.is_authenticated == True:
+        return render(request, 'administrativo.html')
+    else:
+        return redirect('/')  # não estando autenticado volta pra home

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from lais.views import home, cadastro, pag_inicial, logout_view, agendamento, listagem
+from lais.views import home, cadastro, pag_inicial, logout_view, agendamento, listagem, administrativo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +25,5 @@ urlpatterns = [
     path('logout', logout_view, name="logout"),
     path('agendamento', agendamento, name='agendamento'),
     path('listagem', listagem, name='listagem'),
+    path('administrativo', administrativo, name='administrativo'),
 ]
