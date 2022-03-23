@@ -264,9 +264,10 @@ def administrativo(request):
             cod_rec = request.POST.get('cod_est')
 
         # valores de busca do nome digitado
-            for nome in unidades:
-                if nome_rec in nome:
-                    resp_nome[nome] = unidades[nome]
+            if len(nome_rec) != 0:
+                for nome in unidades:
+                    if nome_rec in nome:
+                        resp_nome[nome] = unidades[nome]
 
             # retorna valor do codigo digitado
             for cod in unidades:
