@@ -91,14 +91,32 @@
           {% for message in messages %}
             {%if message.tags == 'success' %}
         <div class="alert alert-success alert-dismissible fade show " role="alert">
-          <strong>Atenção: </strong> 
-          {{message}}
+          <strong> {{message}} </strong>
+          
+          {% for key , vaule in resp_cod.items %}
+           <p> {{vaule}} - {{key}} </p>
+          {%endfor%}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
             {% endif %}
           {% endfor %}
         {% endif %}
 
+         <!-- Info messages -->
+         {% if messages %}
+         {% for message in messages %}
+           {%if message.tags == 'info' %}
+       <div class="alert alert-success alert-dismissible fade show " role="alert">
+         <strong> {{message}} </strong>
+         
+         {% for key , vaule in resp_nome.items %}
+          <p> {{vaule}} - {{key}} </p>
+         {%endfor%}
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+           {% endif %}
+         {% endfor %}
+       {% endif %}
 
           
           <hr> 

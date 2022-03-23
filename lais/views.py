@@ -270,6 +270,8 @@ def administrativo(request):
 
             # retorna valor do codigo digitado
             for cod in unidades:
+                print(cod_rec)
+                print(unidades[cod])
                 if cod_rec == unidades[cod]:
                     resp_cod[cod] = cod_rec
         context = {
@@ -277,9 +279,12 @@ def administrativo(request):
             'resp_cod': resp_cod,
             'resp_nome': resp_nome
         }
-        if len(resp_cod) != 0 or len(resp_nome) != 0:
+        if len(resp_cod) != 0:
             messages.success(
-                request, 'Resultado busca por nome ou codigo')
+                request, 'Resultado : Codigo: ')
+        if len(resp_nome) != 0:
+            messages.info(
+                request, 'Resultado : Nome: ')
 
         return render(request, 'administrativo.html', context)
     else:
