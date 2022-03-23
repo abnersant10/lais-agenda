@@ -248,7 +248,7 @@ def listagem(request):
 
 
 def administrativo(request):
-    if request.user.is_authenticated == True:
+    if request.user.is_authenticated == True and request.user.is_superuser:
         return render(request, 'administrativo.html')
     else:
         return redirect('/')  # não estando autenticado volta pra home

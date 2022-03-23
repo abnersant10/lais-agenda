@@ -14,7 +14,7 @@
       <div class="card container ">
           <div class="card-header bg-primary">
             <nav class="navbar navbar-dark ">
-              <a class="navbar-brand" href="#"><b>Area Administrativa </b></a>
+              <a class="navbar-brand" href="#"><b>Area Restrita : Painel Administrativo </b></a>
             </button>
               <form class="form-inline my-2 my-lg-0">
                 <a href="{% url 'logout' %}" class=" btn btn-warning ">
@@ -57,6 +57,24 @@
                 <button type="button" class="btn btn-warning">Atualizar</button>
               </form>
           </div>
+
+          <hr>
+          <label class="h5 py-2">Buscar Estabelecimento</label>
+          <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Nome do Estabelecimento de saúde">
+              </div>
+              <div class="col">
+            
+                <input type="number" class="form-control" placeholder="Codigo do Estabelecimento de saúde">
+              </div>
+              <div class="col">
+              <button type="button" class="btn btn-success">buscar</button>
+              </div>
+            </div>
+          </form><br>
+
           <hr>
             <h1> Relatórios </h1>
       <br><br>
