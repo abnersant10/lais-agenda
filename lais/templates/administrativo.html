@@ -28,35 +28,45 @@
           </div>  
   
   
+
+          
   
+
+
+
     
   
     <div class="card-body ">
-        <div class="form-group">
-            <hr>
-            <label class="h5">Estabelecimento de Saúde</label>
-            <form>
-                <div class="form-group">
-                  <label class="py-2" >Insira o arquivo XML (estabelecimentos_pr.xml)</label> <br>
-                  <input type="file" class="form-control-file" >
-                </div>
-                <button type="button" class="btn btn-success my-4">Adicionar</button>
-                <button type="button" class="btn btn-warning">Atualizar</button>
-              </form>
-          </div>
-          <hr>
-    
-        <div class="form-group">
-            <label class="h5">Grupo de atendimento XML</label>
+        <hr>
+          <form>
+            <div class="row">
+              <div class="col">
+                <label class="h5">Grupo de atendimento XML</label>
             <form>
                 <div class="form-group">
                   <label class="py-2" >Insira o arquivo XML (grupos_atendimento.xml)</label> <br>
                   <input type="file" class="form-control-file" >
                 </div>
                 <button type="button" class="btn btn-success my-4">Adicionar</button>
-                <button type="button" class="btn btn-warning">Atualizar</button>
+                <button type="button" class="btn btn-warning my-4">Atualizar</button>
+                
               </form>
-          </div>
+              </div>
+              <div class="col">
+                <label class="h5">Estabelecimento de saúde</label>
+                <form>
+                    <div class="form-group">
+                      <label class="py-2" >Insira o arquivo XML (estabelecimentos_pr.xml)</label> <br>
+                      <input type="file" class="form-control-file" >
+                    </div>
+                    <button type="button" class="btn btn-success my-4">Adicionar</button>
+                    <button type="button" class="btn btn-warning my-4">Atualizar</button>
+                  </form>
+                  
+              </div>
+              
+            </div>
+          </form>
 
           <hr>
           <label class="h5 py-2">Buscar Estabelecimento</label>
@@ -74,7 +84,7 @@
               </div>
             </div>
           </form><br>
-          <hr>
+          <hr> 
           <!-- Listagem do cod e unidades -->
 
 
@@ -93,8 +103,6 @@
                 <p> {{nome_unid}} 
               </p> 
               </td>
-              
-              
               </tr>
               {% endfor %}
             </tbody>
