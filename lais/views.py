@@ -256,7 +256,10 @@ def administrativo(request):
         unidades = {}
         for filho in xml:
             unidades[filho[6].text] = filho[1].text
-        print(unidades)
-        return render(request, 'administrativo.html')
+
+        context = {
+            'unidades': unidades
+        }
+        return render(request, 'administrativo.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home

@@ -74,6 +74,31 @@
               </div>
             </div>
           </form><br>
+          <hr>
+          <!-- Listagem do cod e unidades -->
+
+
+          <table class="table table-bordered  table-hover">
+            <thead class="table-light" >
+              <tr>
+                <td class="table-secondary" ><b>Codigo </b></td>
+                <td class="table-secondary" ><b>Nome do Estabelecimento</b></td>
+              </tr>
+            </thead>
+            <tbody>
+              {% for nome_unid, cod_unid in unidades.items %}
+              <tr>
+              <td  class="table-light" > <p> {{cod_unid }}  </p> </td>
+              <td  class="table-light" >
+                <p> {{nome_unid}} 
+              </p> 
+              </td>
+              
+              
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
 
           <hr>
             <h1> Relatórios </h1>
