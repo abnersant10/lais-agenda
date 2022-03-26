@@ -129,7 +129,7 @@ def pag_inicial(request):
         else:
             messages.success(
                 request, 'Está apto para fazer o primeiro agendamento, clique no botão para ir para página de agendamento')
-        print(user[0][1])
+        # print(user[0][1])
         # se teve covid nos ultimos 30 dias
 
         return render(request, 'pag_inicial.html', context)
@@ -170,6 +170,11 @@ def agendamento(request):
             'idade': str(idade),
             'unidades': unidades
         }
+        print(user)
+        if user[0][3] == '65' or user[0][3] == '67' or user[0][3] == '70':
+            return redirect('pag_inicial')
+        if user[0][2] == 'sim':
+            return redirect('pag_inicial')
         if request.method == "POST":
             cod_unid = request.POST.get('unidade')
             data = request.POST.get('data')
@@ -235,6 +240,7 @@ def agendamento(request):
         if cpf in agendados:
             # não pode agendar então volta p pagina inicial
             return redirect('pag_inicial')
+        # if teve covid if pertence ao grupo => voltar p pagina inicial
 
         return render(request, 'agendamento.html', context)
     else:
