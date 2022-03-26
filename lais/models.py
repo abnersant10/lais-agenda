@@ -10,7 +10,7 @@ from django.db import models
 class agendado(models.Model):
     cod_und = models.IntegerField()
     nome_und = models.CharField(max_length=200)
-    cpf = models.IntegerField(primary_key=True)
+    cpf = models.CharField(primary_key=True, max_length=11)
     ag_data = models.DateTimeField()
 
     def __str__(self):

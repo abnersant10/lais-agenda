@@ -213,7 +213,6 @@ def agendamento(request):
                                 ind[1].hour)] + 1
             # se tiver vaga no horario cadastre
             if ag_disp[int(hora)] < 5 and salvar == True:
-
                 agend = agendado(
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
                 agend.save()
