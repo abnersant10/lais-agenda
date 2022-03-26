@@ -233,7 +233,7 @@ def agendamento(request):
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
                 agend.save()
                 return redirect('listagem')
-            else:
+            elif ag_disp[int(hora)] > 5:
                 messages.error(
                     request, 'Não há mais vagas neste horario!')
 
