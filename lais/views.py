@@ -228,12 +228,13 @@ def agendamento(request):
             # se tiver vaga no horario cadastre
             print(ag_disp[int(hora)])
             print(salvar)
+            # se tiver vaga no horario escolhido então salve!
             if ag_disp[int(hora)] < 5 and salvar == True:
                 agend = agendado(
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))
                 agend.save()
                 return redirect('listagem')
-            elif ag_disp[int(hora)] > 5:
+            elif ag_disp[int(hora)] >= 5:
                 messages.error(
                     request, 'Não há mais vagas neste horario!')
 
