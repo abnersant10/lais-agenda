@@ -170,11 +170,7 @@ def agendamento(request):
             'idade': str(idade),
             'unidades': unidades
         }
-        print(user)
-        if user[0][3] == '65' or user[0][3] == '67' or user[0][3] == '70':
-            return redirect('pag_inicial')
-        if user[0][2] == 'sim':
-            return redirect('pag_inicial')
+
         if request.method == "POST":
             cod_unid = request.POST.get('unidade')
             data = request.POST.get('data')
@@ -208,7 +204,11 @@ def agendamento(request):
                 salvar = False
                 messages.error(
                     request, '16:00 é reservado para 60 anos ou mais!')
-
+            # se pertencer aos grupos restritos ou tiver covid nos ultimos 30 dias então voltar pra pagina inicial
+            if user[0][3] == '65' or user[0][3] == '67' or user[0][3] == '70':
+                return redirect('pag_inicial')
+            if user[0][2] == 'sim':
+                return redirect('pag_inicial')
             # se o nom_und tiver cadasterado no BD
             ag_bd = (agendado.objects.values_list('nome_und', 'ag_data'))
 
@@ -226,6 +226,8 @@ def agendamento(request):
                             ag_disp[int(ind[1].hour)] = ag_disp[int(
                                 ind[1].hour)] + 1
             # se tiver vaga no horario cadastre
+            print(ag_disp[int(hora)])
+            print(salvar)
             if ag_disp[int(hora)] < 5 and salvar == True:
                 agend = agendado(
                     cod_und=int(cod_unid), nome_und=nome_unid, cpf=cpf, ag_data=datetime.datetime(int(data.year), int(data.month), int(data.day), int(hora)))

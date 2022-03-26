@@ -1,8 +1,11 @@
 05145830459
 João Miguel  09/12/1996
+(teve covid, 5 trabalhador de saúde)
 
-Maria Clara 11/11/2000
+
+Maria Lourdes Pereira 11/11/1965
 81166306445
+(não teve covid, pertence ao grupo 65)
 
 
 Enzo Gabriel 05/06/2002
@@ -13,3 +16,8 @@ Maria Alice 22/03/1992
 
 Pedro Henrique 04/04/1999
 47544160408
+
+
+Grupo de atendimento que não pode:
+
+65 65 70
