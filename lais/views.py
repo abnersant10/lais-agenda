@@ -288,8 +288,6 @@ def administrativo(request):
 
             # retorna valor do codigo digitado
             for cod in unidades:
-                print(cod_rec)
-                print(unidades[cod])
                 if cod_rec == unidades[cod]:
                     resp_cod[cod] = cod_rec
         context = {

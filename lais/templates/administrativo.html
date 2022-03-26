@@ -42,7 +42,8 @@
             <div class="row">
               <div class="col">
                 <label class="h5">Grupo de atendimento XML</label>
-            <form>
+                <form method="post" >
+                  {%csrf_token%}
                 <div class="form-group">
                   <label class="py-2" >Insira o arquivo XML (grupos_atendimento.xml)</label> <br>
                   <input type="file" class="form-control-file" >
@@ -54,7 +55,8 @@
               </div>
               <div class="col">
                 <label class="h5">Estabelecimentos de saúde XML</label>
-                <form>
+                <form method="post" >
+                  {%csrf_token%}
                     <div class="form-group">
                       <label class="py-2" >Insira o arquivo XML (estabelecimentos_pr.xml)</label> <br>
                       <input type="file" class="form-control-file" >
