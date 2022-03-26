@@ -29,7 +29,7 @@ e lotar a primeira unidade as 13 horas
 	{
 		"nome": "Tereza Jéssica Raimunda Ribeiro",
 		"idade": 24,
-		"cpf": "472.916.934-46",
+		"cpf": "47291693446",
 		"rg": "31.358.646-9",
 		"data_nasc": "03/02/1998",
 		"sexo": "Feminino",
@@ -54,7 +54,7 @@ e lotar a primeira unidade as 13 horas
 	{
 		"nome": "Alessandra Camila Melo",
 		"idade": 24,
-		"cpf": "508.702.614-10",
+		"cpf": "50870261410",
 		"rg": "40.759.847-9",
 		"data_nasc": "07/01/1998",
 		"sexo": "Feminino",
@@ -79,7 +79,7 @@ e lotar a primeira unidade as 13 horas
 	{
 		"nome": "Teresinha Maya da Paz",
 		"idade": 24,
-		"cpf": "619.874.034-01",
+		"cpf": "61987403401",
 		"rg": "22.296.054-1",
 		"data_nasc": "13/02/1998",
 		"sexo": "Feminino",
@@ -104,7 +104,7 @@ e lotar a primeira unidade as 13 horas
 	{
 		"nome": "Carolina Alana Amanda da Rocha",
 		"idade": 24,
-		"cpf": "787.283.974-10",
+		"cpf": "78728397410",
 		"rg": "28.867.888-6",
 		"data_nasc": "12/03/1998",
 		"sexo": "Feminino",
@@ -129,7 +129,7 @@ e lotar a primeira unidade as 13 horas
 	{
 		"nome": "Isabelle Marcela Peixoto",
 		"idade": 24,
-		"cpf": "157.435.694-10",
+		"cpf": "15743569410",
 		"rg": "20.120.805-2",
 		"data_nasc": "07/03/1998",
 		"sexo": "Feminino",
