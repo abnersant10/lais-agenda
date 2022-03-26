@@ -52,7 +52,8 @@
         </p> 
         </td>
         <td  class="table-light">
-           {% if  today.date < data.date %}
+          <!-- 
+            {% if  today.date < data.date %}
                  {% if  today.hour < data.hour %}
                   <p> Não </p>
                  {% endif %}
@@ -61,6 +62,15 @@
                   <p> Sim </p>
            {% endif %}
 
+          -->
+           
+          {% if  today.date < data.date %}
+                <p> Não </p>
+           {% endif %}
+
+          {% if  today.date > data.date %}
+           <p> Sim </p>
+          {% endif %}
            
            
  

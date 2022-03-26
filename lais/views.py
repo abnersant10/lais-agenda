@@ -170,7 +170,6 @@ def agendamento(request):
             'idade': str(idade),
             'unidades': unidades
         }
-
         if request.method == "POST":
             cod_unid = request.POST.get('unidade')
             data = request.POST.get('data')
@@ -290,10 +289,25 @@ def administrativo(request):
             for cod in unidades:
                 if cod_rec == unidades[cod]:
                     resp_cod[cod] = cod_rec
+
+        # verificar usuários aptos ou não
+        user = cidadao.objects.values_list('teve_covid', 'grp_atend')
+        print(user)
+        apto = 0
+        n_apto = 0
+        for n in range(len(user)):
+            # nao teve codvid e nao pertence ao grupo 65 | 67 | 70
+            if user[n][0] == 'sim' or user[n][1] == '65' or user[n][1] == '67' or user[n][1] == '70':
+                n_apto = n_apto + 1
+            else:
+                apto = apto+1
+
         context = {
             'unidades': unidades,
             'resp_cod': resp_cod,
-            'resp_nome': resp_nome
+            'resp_nome': resp_nome,
+            'apto': apto,
+            'n_apto': n_apto
         }
         if len(resp_cod) != 0:
             messages.success(
