@@ -63,13 +63,13 @@ def cadastro(request):
         if senha1 != senha2:
             messages.error(request, 'As senhas não conferem!')
             salvar = False
-        if teve_covid == 'sim':
-            messages.error(request, 'Você teve COVID nos ultimos 30 dias!')
-            salvar = False
-        if grp == "67" or grp == "65" or grp == "70":
-            messages.error(
-                request, 'Seu grupo de atendimento não permite cadastrar!')
-            salvar = False
+        # if teve_covid == 'sim':
+        #    messages.error(request, 'Você teve COVID nos ultimos 30 dias!')
+        #    salvar = False
+        # if grp == "67" or grp == "65" or grp == "70":
+        #    messages.error(
+        #        request, 'Seu grupo de atendimento não permite cadastrar!')
+        #    salvar = False
         # Se o CPF NÃO estiver cadastrado, então salve os dados user
         if salvar and True:
             try:
@@ -119,10 +119,19 @@ def pag_inicial(request):
         if cpf in agendados:
             messages.error(
                 request, 'O seu CPF já foi cadastrado na lista agendamento do sistema, contate do administrador para liberar um novo agendamento')
-
+        elif user[0][2] == 'sim':
+            messages.error(
+                request, 'Não está apto  para agendafmento, você teve covid nos ultimos 30 dias!')
+        # se pertencer a um dos 3 grupos não realize agendamento
+        elif user[0][3] == '65' or user[0][3] == '67' or user[0][3] == '70':
+            messages.error(
+                request, 'Não é permitido agendar para seu grupo de atendimento!')
         else:
             messages.success(
                 request, 'Está apto para fazer o primeiro agendamento, clique no botão para ir para página de agendamento')
+        print(user[0][1])
+        # se teve covid nos ultimos 30 dias
+
         return render(request, 'pag_inicial.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
