@@ -292,7 +292,6 @@ def administrativo(request):
 
         # verificar usuários aptos ou não
         user = cidadao.objects.values_list('teve_covid', 'grp_atend')
-        print(user)
         apto = 0
         n_apto = 0
         for n in range(len(user)):
@@ -301,6 +300,16 @@ def administrativo(request):
                 n_apto = n_apto + 1
             else:
                 apto = apto+1
+        # exibir estabelecimento por quantidade de agendamento
+        agend = agendado.objects.values_list('nome_und')
+        res = {}
+        i = 0
+        for j in agend:
+            if j[0] in unidades:
+                i = i + 1
+                res[j[0]] = i
+
+        print(res)
 
         context = {
             'unidades': unidades,
