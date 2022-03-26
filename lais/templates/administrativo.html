@@ -43,14 +43,14 @@ function drawBasic() {
       var data = google.visualization.arrayToDataTable([
 
       
-        ['C', 'Unidades',],
+        ['C', 'Pessoas',],
         {% for key , vaule in unid_qtd.items %}
              [ '{{ key }}' , {{ vaule }} ],    
       {% endfor %}
       ]);
 
       var options = {
-        title: 'Unidaded x Agendamento',
+        title: 'Unidades x Agendamento',
         chartArea: {width: '50%'},
         hAxis: {
           title: 'Quantidade de agendamento',

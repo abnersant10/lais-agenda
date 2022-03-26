@@ -128,7 +128,7 @@ def pag_inicial(request):
                 request, 'Não é permitido agendar para seu grupo de atendimento!')
         else:
             messages.success(
-                request, 'Está apto para fazer o primeiro agendamento, clique no botão para ir para página de agendamento')
+                request, 'Está apto para fazer o primeiro agendamento, clique no botão AGENDAR para ir para página de agendamento')
         # print(user[0][1])
         # se teve covid nos ultimos 30 dias
 
