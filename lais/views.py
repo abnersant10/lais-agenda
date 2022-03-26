@@ -302,21 +302,20 @@ def administrativo(request):
                 apto = apto+1
         # exibir estabelecimento por quantidade de agendamento
         agend = agendado.objects.values_list('nome_und')
-        res = {}
+        unid_qtd = {}
         i = 0
         for j in agend:
             if j[0] in unidades:
                 i = i + 1
-                res[j[0]] = i
-
-        print(res)
+                unid_qtd[j[0]] = i
 
         context = {
             'unidades': unidades,
             'resp_cod': resp_cod,
             'resp_nome': resp_nome,
             'apto': apto,
-            'n_apto': n_apto
+            'n_apto': n_apto,
+            'unid_qtd': unid_qtd
         }
         if len(resp_cod) != 0:
             messages.success(

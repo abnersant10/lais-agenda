@@ -41,12 +41,12 @@ google.charts.setOnLoadCallback(drawBasic);
 function drawBasic() {
 
       var data = google.visualization.arrayToDataTable([
+
+      
         ['C', 'Unidades',],
-        ['New York City, NY', 81],
-        ['Los Angeles, CA', 37],
-        ['Chicago, IL', 26],
-        ['Houston, TX', 20],
-        ['Philadelphia, PA', 15]
+        {% for key , vaule in unid_qtd.items %}
+             [ '{{ key }}' , {{ vaule }} ],    
+      {% endfor %}
       ]);
 
       var options = {
@@ -211,8 +211,9 @@ function drawBasic() {
           <hr>
             <h1> Relatórios </h1>
             <h3> Gráfico de Barras : Agendamentos por Estabelecimento </h3>
+            <br><br><br>
             <div id="chart_div"></div>
-
+            <br><br>
             <h3> Gráfico de Pizza : Usuários aptos ao agendamento </h3>
             <div id="piechart" style="width: 900px; height: 500px;"></div>
       <br>
