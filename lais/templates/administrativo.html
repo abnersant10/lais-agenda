@@ -10,7 +10,9 @@
   <!-- GoogleCharts-->
   
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+  
+  <!-- Grafico de Pizzas-->  
+  <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
@@ -23,7 +25,7 @@
         ]);
 
         var options = {
-          title: 'Usuários cadastrados'
+          title: 'Para todos os usuários'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -31,7 +33,39 @@
         chart.draw(data, options);
       }
     </script>
+<!-- Grafico de barras -->
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
 
+function drawBasic() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['City', 'Unidades',],
+        ['New York City, NY', 81],
+        ['Los Angeles, CA', 37],
+        ['Chicago, IL', 26],
+        ['Houston, TX', 20],
+        ['Philadelphia, PA', 15]
+      ]);
+
+      var options = {
+        title: 'Unidaded x Agendamento',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Quantidade de agendamento',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Unidades'
+        }
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+    </script>
 
 
   <!------ Include the above in your HEAD tag ---------->
@@ -177,7 +211,7 @@
           <hr>
             <h1> Relatórios </h1>
             <h3> Gráfico de Barras : Agendamentos por Estabelecimento </h3>
-            <br><br><br><br><br> 
+            <div id="chart_div"></div>
 
             <h3> Gráfico de Pizza : Usuários aptos ao agendamento </h3>
             <div id="piechart" style="width: 900px; height: 500px;"></div>
