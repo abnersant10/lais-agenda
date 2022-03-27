@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 import http
 from pyexpat import model
 from urllib.request import Request
@@ -18,7 +19,9 @@ from validate_docbr import CPF
 import xml.etree.ElementTree as ET
 import datetime
 import calendar
-from time import sleep, time
+import os
+from time import time
+
 
 # Create your views here.
 
@@ -274,11 +277,9 @@ def administrativo(request):
         unidades = {}
         for filho in xml:
             unidades[filho[6].text] = filho[1].text
-
         if request.method == "POST":
             nome_rec = request.POST.get('nome_est')
             cod_rec = request.POST.get('cod_est')
-
         # valores de busca do nome digitado
             if len(nome_rec) != 0:
                 for nome in unidades:

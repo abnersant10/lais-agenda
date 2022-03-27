@@ -73,6 +73,7 @@ function drawBasic() {
   <body>
     
   <div class="container">
+
     <p> {{agend.ag_data}} </p>
       <div class="card container ">
           <div class="card-header bg-primary">
@@ -100,12 +101,16 @@ function drawBasic() {
     
   
     <div class="card-body ">
-        <hr>
+
+
+      
+      
+      <hr>
           <form>
             <div class="row">
               <div class="col">
                 <label class="h5">Grupo de atendimento XML</label>
-                <form method="post" >
+                <form method="GET" enctype="multipart/form-data" >
                   {%csrf_token%}
                 <div class="form-group">
                   <label class="py-2" >Insira o arquivo XML (grupos_atendimento.xml)</label> <br>
