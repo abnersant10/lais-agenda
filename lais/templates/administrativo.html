@@ -109,11 +109,10 @@ function drawBasic() {
                   {%csrf_token%}
                 <div class="form-group">
                   <label class="py-2" >Insira o arquivo XML (grupos_atendimento.xml)</label> <br>
-                  <input type="file" class="form-control-file" >
+                  <input type="file" name='grup_at' class="form-control-file" >
                 </div>
-                <button type="button" class="btn btn-success my-4">Adicionar</button>
+                <button type="submit" class="btn btn-success my-4">Adicionar</button>
                 <button type="button" class="btn btn-warning my-4">Atualizar</button>
-                
               </form>
               </div>
               <div class="col">
