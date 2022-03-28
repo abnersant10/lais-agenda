@@ -130,7 +130,7 @@ def pag_inicial(request):
         else:
             messages.success(
                 request, 'Está apto para fazer o primeiro agendamento, clique no botão AGENDAR para ir para página de agendamento')
-        # print(user[0][1])
+
         # se teve covid nos ultimos 30 dias
 
         return render(request, 'pag_inicial.html', context)
@@ -148,8 +148,6 @@ def agendamento(request):
     if request.user.is_authenticated == True:
         cpf = request.user.username
         salvar = True
-        # x = cidadao.objects.values_list('nome', 'cpf', 'cpf_id')
-        # x = cidadao.objects.all().values('nome', 'cpf__username')
         user = list(cidadao.objects.filter(
             cpf__username=request.user.username).values_list('nome', 'nasc', 'teve_covid', 'grp_atend'))
 
@@ -174,11 +172,9 @@ def agendamento(request):
             cod_unid = request.POST.get('unidade')
             data = request.POST.get('data')
             hora = request.POST.get('hora')
-            # debug test
-            # se for hoje ou domingo, segunda ou terça (não cadastre)
+            # se for hoje ou quinta sex sab ou dom (não cadastre)
             data = datetime.datetime.strptime(data, "%Y-%m-%d")
-            print(calendar.day_name[data.weekday()])
-            if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Thursday') or calendar.day_name[data.weekday()] == ('Friday') or calendar.day_name[data.weekday()] == ('Saturday') or calendar.day_name[data.weekday()] == ('Sunday'):
+            if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Thursday') or calendar.day_name[data.weekday()] == ('Friday') or calendar.day_name[data.weekday()] == ('Saturday') or calendar.day_name[data.weekday()] == 'Sunday':
                 salvar = False
                 messages.error(
                     request, 'Esta data não é permitida')
@@ -226,8 +222,7 @@ def agendamento(request):
                             ag_disp[int(ind[1].hour)] = ag_disp[int(
                                 ind[1].hour)] + 1
             # se tiver vaga no horario cadastre
-            print(ag_disp[int(hora)])
-            print(salvar)
+
             # se tiver vaga no horario escolhido então salve!
             if ag_disp[int(hora)] < 5 and salvar == True:
                 agend = agendado(
@@ -310,9 +305,6 @@ def administrativo(request):
                     unid_qtd[j[0]] = unid_qtd[j[0]] + 1
                 else:
                     unid_qtd[j[0]] = unid_qtd[j[0]] + 1
-
-        print(unid_qtd)
-        # unid_qtd[j] = 1 + i
 
         context = {
             'unidades': unidades,
