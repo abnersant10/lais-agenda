@@ -24,8 +24,6 @@ from time import time
 
 
 # Create your views here.
-
-
 def home(request):
     if request.method == 'POST':
         cpf = request.POST.get('cpf')
@@ -138,7 +136,6 @@ def pag_inicial(request):
         return render(request, 'pag_inicial.html', context)
     else:
         return redirect('/')  # não estando autenticado volta pra home
-
 # Logout
 
 
@@ -305,10 +302,12 @@ def administrativo(request):
         agend = agendado.objects.values_list('nome_und')
         unid_qtd = {}
         i = 0
+        aux = 0
         for j in agend:
             if j[0] in unidades:
-                i = i + 1
+                i = i + aux
                 unid_qtd[j[0]] = i
+                print(unid_qtd)
 
         context = {
             'unidades': unidades,
