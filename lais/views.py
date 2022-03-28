@@ -178,7 +178,7 @@ def agendamento(request):
             # se for hoje ou domingo, segunda ou terça (não cadastre)
             data = datetime.datetime.strptime(data, "%Y-%m-%d")
             print(calendar.day_name[data.weekday()])
-            if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Sunday') or calendar.day_name[data.weekday()] == ('Monday') or calendar.day_name[data.weekday()] == 'Tuesday':
+            if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Thursday') or calendar.day_name[data.weekday()] == ('Friday') or calendar.day_name[data.weekday()] == ('Saturday') or calendar.day_name[data.weekday()] == ('Sunday'):
                 salvar = False
                 messages.error(
                     request, 'Esta data não é permitida')
