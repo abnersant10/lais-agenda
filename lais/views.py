@@ -301,13 +301,17 @@ def administrativo(request):
         # exibir estabelecimento por quantidade de agendamento
         agend = agendado.objects.values_list('nome_und')
         unid_qtd = {}
-        i = 0
-        aux = 0
+
         for j in agend:
             if j[0] in unidades:
-                i = i + aux
-                unid_qtd[j[0]] = i
-                print(unid_qtd)
+                if unid_qtd.get(j[0]) == None:
+                    unid_qtd[j[0]] = 0
+                    unid_qtd[j[0]] = unid_qtd[j[0]] + 1
+                else:
+                    unid_qtd[j[0]] = unid_qtd[j[0]] + 1
+
+        print(unid_qtd)
+        #unid_qtd[j] = 1 + i
 
         context = {
             'unidades': unidades,
