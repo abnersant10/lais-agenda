@@ -177,7 +177,8 @@ def agendamento(request):
             # debug test
             # se for hoje ou domingo, segunda ou terça (não cadastre)
             data = datetime.datetime.strptime(data, "%Y-%m-%d")
-            if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Sunday' or 'Monday' or 'Tuesday'):
+            print(calendar.day_name[data.weekday()])
+            if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Sunday') or calendar.day_name[data.weekday()] == ('Monday') or calendar.day_name[data.weekday()] == 'Tuesday':
                 salvar = False
                 messages.error(
                     request, 'Esta data não é permitida')
@@ -311,7 +312,7 @@ def administrativo(request):
                     unid_qtd[j[0]] = unid_qtd[j[0]] + 1
 
         print(unid_qtd)
-        #unid_qtd[j] = 1 + i
+        # unid_qtd[j] = 1 + i
 
         context = {
             'unidades': unidades,
