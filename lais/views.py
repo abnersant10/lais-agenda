@@ -22,8 +22,9 @@ import calendar
 import os
 from time import time
 
-
 # Create your views here.
+
+
 def home(request):
     if request.method == 'POST':
         cpf = request.POST.get('cpf')
@@ -174,7 +175,7 @@ def agendamento(request):
             hora = request.POST.get('hora')
             # se for hoje ou quinta sex sab ou dom (não cadastre)
             data = datetime.datetime.strptime(data, "%Y-%m-%d")
-            if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Thursday') or calendar.day_name[data.weekday()] == ('Friday') or calendar.day_name[data.weekday()] == ('Saturday') or calendar.day_name[data.weekday()] == 'Sunday':
+            if data <= datetime.datetime.today() or calendar.day_name[data.weekday()] == ('Sunday') or calendar.day_name[data.weekday()] == ('Friday') or calendar.day_name[data.weekday()] == ('Monday') or calendar.day_name[data.weekday()] == 'Tuesday':
                 salvar = False
                 messages.error(
                     request, 'Esta data não é permitida')
